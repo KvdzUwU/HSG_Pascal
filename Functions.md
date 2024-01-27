@@ -35,7 +35,7 @@ begin
   begin
     if odd(b) then
       mulmod := (mulmod + a) mod c;
-    a := (a * a) mod c;
+    a := (a * 2) mod c;
     b := b div 2;
   end;
 end;
