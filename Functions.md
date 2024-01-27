@@ -92,7 +92,7 @@ var i : longint;
 begin
   laplai := true;
   for i := 1 to length(st) div 2 do
-    if st[i] <> st[length(st) div + i] then
+    if st[i] <> st[length(st) div 2 + i] then
       exit(false);
 end;
 ```
