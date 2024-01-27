@@ -71,6 +71,8 @@ Note: Dùng kèm hàm swap ở trên
 #### Bubble Sort (Tốt nhất: O(n) trung bình-xấu: O(n ^ 2))
 ```pas
 procedure bubbleSort(var a : array of longint; n : longint);
+var i, j : longint;
+swapped : boolean;
 begin
   for i := 0 to n - 1 do
   begin
