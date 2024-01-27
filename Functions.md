@@ -2,7 +2,7 @@
 Một số hàm thông dụng (Ngôn ngữ Pascal)
 
 ## Kiểm Tra
-### Số Nguyên Tố
+### *Số Nguyên Tố
 Ví dụ: 2, 3, 5, 7, 11, 13 ... 
 ```pas
 function Prime(n : longint):boolean;
