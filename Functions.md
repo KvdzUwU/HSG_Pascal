@@ -3,7 +3,7 @@ Một số hàm thông dụng (Ngôn ngữ Pascal)
 
 ## Kiểm Tra Số Nguyên Tố
 ```pascal
-function ngto(n : longint):boolean;
+function Prime(n : longint):boolean;
 var i : longint;
 begin
   ngto := n > 1;
@@ -11,11 +11,10 @@ begin
     if n mod i = 0 then
       exit(false);
 end;
-ngto(2) => true
 ```
 ## Kiểm Tra Xâu Đối Xứng
 ```pascal
-function dx(st : string):boolean;
+function kt(st : string):boolean;
 var i : longint;
 begin
   dx := true;
@@ -23,11 +22,10 @@ begin
     if st[i] <> st[length(st) - i + 1] then
       exit(false);
 end;
-dx('abcba') => true
 ```
 ## Kiểm Tra Xâu Lặp Lại
 ```pascal
-function laplai(st : string):boolean;
+function kt(st : string):boolean;
 var i : longint;
 begin
   laplai := true;
@@ -35,7 +33,6 @@ begin
     if st[i] <> st[length(st) div + i] then
       exit(false);
 end;
-laplai('abcabc') => true
 ```
 ## Tìm X Có Xuất Hiện Trong Mảng A Không 
 Note: Nên dùng cùng mảng đã sắp xếp tăng dần nha
@@ -52,10 +49,6 @@ begin
     else binarySearch := binarySearch(a, mid + 1, r, x);
   end;
 end;
-n = 5
-x = 2
-a = [1, 2, 3, 4, 5]
-binarySearch(a, 0, n, x) => true
 ```
 ## Đảo Giá Trị Của 2 Số
 ```pascal
@@ -92,5 +85,4 @@ begin
   quickSort(a, l, pi - 1);
   quickSort(a, pi + 1, r);
 end;
-
 ```
