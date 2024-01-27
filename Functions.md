@@ -54,6 +54,25 @@ begin
 end;
 ```
 ## Mảng (Array)
+### Nhập / Xuất Mảng
+#### Nhập
+```pas
+procedure readArr(var a : array of longint; n : longint);
+begin
+  for i := 0 to n - 1 do
+    read(a[i]);
+  readln;
+end;
+```
+#### Xuất
+```pas
+procedure printArr(a : array of longint; n : longint);
+var i : longint;
+begin
+  for i := 0 to n - 1 do
+    write(a[i],' ');
+end;
+```
 ### Đảo Giá Trị Của 2 Biến
 Có thể thay kiểu dữ liệu longint thành char để đảo kí tự
 ```pas
@@ -73,10 +92,10 @@ procedure bubbleSort(var a : array of longint; n : longint);
 var i, j : longint;
 swapped : boolean;
 begin
-  for i := 0 to n - 1 do
+  for i := 0 to n - 2 do
   begin
     swapped := false;
-    for j := 0 to n - i - 1 do
+    for j := 0 to n - i - 2 do
       if a[j] > a[j + 1] then
       begin
         swap(a[j], a[j + 1]);
