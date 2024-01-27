@@ -15,7 +15,7 @@ end;
 ```
 ## Kiểm Tra Xâu Đối Xứng
 Ví dụ: '12321'
-```py
+```pas
 function kt(st : string):boolean;
 var i : longint;
 begin
