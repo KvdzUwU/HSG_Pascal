@@ -5,13 +5,12 @@ Một số hàm thông dụng (Ngôn ngữ Pascal)
 ### Số Nguyên Tố
 Ví dụ: 2, 3, 5, 7, 11, 13 ... 
 ```pas
-function Prime(n : longint):boolean;
+function Prime(n : qword):boolean;
 var i : longint;
 begin
-  ngto := n > 1;
+  Prime := n > 1;
   for i := 2 to trunc(sqrt(n)) do
-    if n mod i = 0 then
-      exit(false);
+    if n mod i = 0 then exit(false);
 end;
 ```
 ### Tính A ^ B (a ^ b <= 10^18)
