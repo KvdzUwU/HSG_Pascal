@@ -26,6 +26,34 @@ begin
     pow := sqr(pow(a, b div 2));
 end;
 ```
+### Tính A ^ B Mod C (Luỹ Thừa Nhanh) (a, b, c <= 10^18)
+```pas
+function mulmod(a, b, c : qword):qword;
+begin
+  mulmod := 0;
+  while b > 0 do
+  begin
+    if odd(b) then
+      mulmod := (mulmod + a) mod c;
+    a := (a * a) mod c;
+    b := b div 2;
+  end;
+end;
+function powMod(a, b, c : qword):qword;
+begin
+  powMod := 1;
+  a := a mod c; // Số a mod c trước để giảm độ lớn
+  if Prime(c) then
+    b := b mod (c - 1); // Mũ b mod (c - 1) nếu c là số nguyên tố
+  while b > 0 do
+  begin
+    if odd(b) then
+      powMod := mulmod(powMod, a, c);
+    a := mulmod(a, a, c);
+    b := b div 2;
+  end;
+end;
+```
 ## Mảng (Array)
 ### Đảo Giá Trị Của 2 Biến
 Có thể thay kiểu dữ liệu longint thành char để đảo kí tự
