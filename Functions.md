@@ -3,6 +3,7 @@ Một số hàm thông dụng (Ngôn ngữ Pascal)
 
 ## Toán Tin (int, double)
 ### Số Nguyên Tố
+Chạy từ 2 đến căn bậc 2 của n để kiểm tra xem n có ước nào ngoài chính nó và 1
 Ví dụ: 2, 3, 5, 7, 11, 13 ... 
 ```pas
 function Prime(n : qword):boolean;
@@ -14,6 +15,7 @@ begin
 end;
 ```
 ### Tính A ^ B (a ^ b <= 10^18)
+Đệ quy nếu mũ lẻ thì * a, chẵn thì giữ nguyên đến b = 0 thì dừng
 ```pas
 function pow(a, b : longint):qword;
 begin
@@ -25,6 +27,7 @@ begin
 end;
 ```
 ### Tính A ^ B Mod C (Luỹ Thừa Nhanh) (a, b, c <= 10^18)
+Xử lí bằng cách luỹ thừa lên nếu mũ lẻ
 ```pas
 function mulmod(a, b, c : qword):qword;
 begin
@@ -55,6 +58,7 @@ end;
 ## Mảng (Array)
 ### Nhập / Xuất Mảng
 #### Nhập
+Nhập vào n phần tử của mảng A
 ```pas
 procedure readArr(var a : array of longint; n : longint);
 begin
@@ -64,6 +68,7 @@ begin
 end;
 ```
 #### Xuất
+In ra n phần tử của mảng A
 ```pas
 procedure printArr(a : array of longint; n : longint);
 var i : longint;
@@ -87,6 +92,7 @@ end;
 ### Sắp Xếp Mảng
 Note: Dùng kèm hàm swap ở trên
 #### Bubble Sort (Tốt nhất: O(n) trung bình-xấu: O(n ^ 2))
+Sắp xếp nổi bọt
 ```pas
 procedure bubbleSort(var a : array of longint; n : longint);
 var i, j : longint;
@@ -106,8 +112,27 @@ begin
   end;
 end;
 ```
+#### Insertion Sort (O(n * 2)) 
+Sắp xếp chèn
+```pas
+procedure insertionSort(var a : array of longint; n : longint);
+var i, j, key : longint;
+begin
+  for i := 1 to n - 1 do
+  begin
+    key := a[i];
+    j := i - 1;
+    while (j >= 0) and (a[j] > key) do
+    begin
+      a[j + 1] := a[j];
+      dec(j);
+    end;
+    a[j + 1] := key;
+  end;
+end;
+```
 #### Quick Sort (trung bình: O(nlog(n)) xấu: O(n ^ 2))
-Đệ quy chia mảng ra từng vùng rồi sắp xếp
+Sắp xếp nhanh. Đệ quy chia mảng ra từng vùng rồi sắp xếp
 ```pas
 function part(var a : array of longint; l, r : longint):longint;
 var i, j, pivot : longint;
@@ -134,6 +159,7 @@ end;
 ```
 ### Kiểm Tra X Có Xuất Hiện Trong Mảng A Không 
 Note: Nên dùng cùng mảng đã sắp xếp tăng dần
+Tìm kiếm nhị phân
 ```pas
 function binarySearch(a : array of longint; l, r, x : longint):boolean;
 begin
@@ -148,6 +174,7 @@ end;
 ```
 ## Xâu Kí Tự (String)
 ### Xâu Đối Xứng
+So sánh đầu và đuôi của xâu
 Ví dụ: '12321'
 ```pas
 function kt(st : string):boolean;
@@ -160,6 +187,7 @@ begin
 end;
 ```
 ### Xâu Lặp Lại
+So sánh đầu và giữa + đầu của xâu
 Ví dụ: 'ABCABC'
 ```pas
 function kt(st : string):boolean;
