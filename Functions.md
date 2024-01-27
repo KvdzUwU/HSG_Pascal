@@ -14,7 +14,7 @@ begin
       exit(false);
 end;
 ```
-### Tính A ^ B 
+### Tính A ^ B (a ^ b <= 10^18)
 ```pas
 function pow(a, b : longint):qword;
 begin
@@ -57,7 +57,7 @@ end;
 ## Mảng (Array)
 ### Đảo Giá Trị Của 2 Biến
 Có thể thay kiểu dữ liệu longint thành char để đảo kí tự
-```pascal
+```pas
 procedure swap(var a, b : longint);
 var t : longint;
 begin
@@ -67,10 +67,28 @@ begin
 end;
 ```
 ### Sắp Xếp Mảng
+Note: Dùng kèm hàm swap ở trên
+#### Bubble Sort (Tốt nhất: O(n) trung bình-xấu: O(n ^ 2))
+```pas
+procedure bubbleSort(var a : array of longint; n : longint);
+begin
+  for i := 0 to n - 1 do
+  begin
+    swapped := false;
+    for j := 0 to n - i - 1 do
+      if a[j] > a[j + 1] then
+      begin
+        swap(a[j], a[j + 1]);
+        swapped := true;
+      end;
+    if not swapped then
+      exit;
+  end;
+end;
+```
+#### Quick Sort (trung bình: O(nlog(n)) xấu: O(n ^ 2))
 Đệ quy chia mảng ra từng vùng rồi sắp xếp
-Note: Dùng kèm hàm swap
-#### Quick Sort
-```pascal
+```pas
 function part(var a : array of longint; l, r : longint):longint;
 var i, j, pivot : longint;
 begin
@@ -96,19 +114,16 @@ end;
 ```
 ### Kiểm Tra X Có Xuất Hiện Trong Mảng A Không 
 Note: Nên dùng cùng mảng đã sắp xếp tăng dần
-```pascal
+```pas
 function binarySearch(a : array of longint; l, r, x : longint):boolean;
 begin
-  if r >= l then
-  begin
-    mid := l + (r - l) div 2;
-    if a[mid] = x then
-      binarySearch := true
-    else if a[mid] > x then
-      binarySearch := binarySearch(a, l, mid - 1, x)
-    else binarySearch := binarySearch(a, mid + 1, r, x);
-  end
-  else binarySearch := false;
+  if l > r then exit(false);
+  mid := l + (r - l) div 2;
+  if a[mid] = x then
+    exit(true);
+  if a[mid] > x then
+    exit(binarySearch(a, l, mid - 1, x));
+  exit(binarySearch(a, mid + 1, r, x));
 end;
 ```
 ## Xâu Kí Tự (String)
@@ -126,7 +141,7 @@ end;
 ```
 ### Xâu Lặp Lại
 Ví dụ: 'ABCABC'
-```pascal
+```pas
 function kt(st : string):boolean;
 var i : longint;
 begin
