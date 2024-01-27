@@ -3,7 +3,7 @@ Một số hàm thông dụng (Ngôn ngữ Pascal)
 
 ## Toán Tin (int, double)
 ### Số Nguyên Tố
-Chạy từ 2 đến căn bậc 2 của n để kiểm tra xem n có ước nào ngoài chính nó và 1
+Chạy từ 2 đến căn bậc 2 của n để kiểm tra ước khác ngoài 1 và chính nó
 Ví dụ: 2, 3, 5, 7, 11, 13 ... 
 ```pas
 function Prime(n : qword):boolean;
@@ -26,7 +26,7 @@ begin
   exit(sqr(pow(a, b div 2)));
 end;
 ```
-### Tính A ^ B Mod C (Luỹ Thừa Nhanh) (a, b, c <= 10^18)
+### Tính A ^ B Mod C (Luỹ Thừa Nhanh) (a, b, c <= 10^18) (2023 AG)
 Xử lí bằng cách luỹ thừa lên nếu mũ lẻ
 ```pas
 function mulmod(a, b, c : qword):qword;
@@ -197,5 +197,16 @@ begin
   for i := 1 to length(st) div 2 do
     if st[i] <> st[length(st) div 2 + i] then
       exit(false);
+end;
+```
+### Hoán vị Xâu
+Hoán vị một xâu theo đoạn mã n phần tử là các vị trí mới (2023 AG)
+```pas
+function hv(st : string; a : array of longint; n : longint):string;
+var i : longint;
+begin
+  hv := '';
+  for i := 0 to n - 1 do
+    hv := hv + st[a[i]];
 end;
 ```
