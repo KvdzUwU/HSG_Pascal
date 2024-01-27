@@ -68,7 +68,7 @@ end;
 ## Sắp Xếp Mảng
 Đệ quy chia mảng ra từng vùng rồi sắp xếp
 Note: Dùng kèm hàm swap
-### Quick Sort
+# Quick Sort
 ```pascal
 function part(var a : array of longint; l, r : longint):longint;
 var i, j, pivot : longint;
