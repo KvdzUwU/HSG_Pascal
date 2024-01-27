@@ -14,6 +14,18 @@ begin
       exit(false);
 end;
 ```
+### Tính A ^ B 
+```pas
+function pow(a, b : longint):qword;
+begin
+  if b = 0 then
+    exit(1);
+  if odd(b) then
+    pow := a * sqr(pow(a, (b - 1) div 2))
+  else
+    pow := sqr(pow(a, b div 2));
+end;
+```
 ## Mảng (Array)
 ### Đảo Giá Trị Của 2 Biến
 Có thể thay kiểu dữ liệu longint thành char để đảo kí tự
