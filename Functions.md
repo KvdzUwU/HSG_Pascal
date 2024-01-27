@@ -2,6 +2,7 @@
 Một số hàm thông dụng (Ngôn ngữ Pascal)
 
 ## Kiểm Tra Số Nguyên Tố
+Ví dụ: 2, 3, 5, 7, 11, 13 ... 
 ```pascal
 function Prime(n : longint):boolean;
 var i : longint;
@@ -13,6 +14,7 @@ begin
 end;
 ```
 ## Kiểm Tra Xâu Đối Xứng
+Ví dụ: '12321'
 ```pascal
 function kt(st : string):boolean;
 var i : longint;
@@ -24,6 +26,7 @@ begin
 end;
 ```
 ## Kiểm Tra Xâu Lặp Lại
+Ví dụ: 'ABCABC'
 ```pascal
 function kt(st : string):boolean;
 var i : longint;
@@ -35,7 +38,7 @@ begin
 end;
 ```
 ## Tìm X Có Xuất Hiện Trong Mảng A Không 
-Note: Nên dùng cùng mảng đã sắp xếp tăng dần nha
+Note: Nên dùng cùng mảng đã sắp xếp tăng dần
 ```pascal
 function binarySearch(a : array of longint; l, r, x : longint):boolean;
 begin
@@ -50,7 +53,8 @@ begin
   end;
 end;
 ```
-## Đảo Giá Trị Của 2 Số
+## Đảo Giá Trị Của 2 Biến
+Có thể thay kiểu dữ liệu longint thành char để đảo kí tự
 ```pascal
 procedure swap(var a, b : longint);
 var t : longint;
@@ -61,7 +65,8 @@ begin
 end;
 ```
 # Sắp Xếp Mảng (Quick Sort)
-Dùng kèm hàm swap
+Đệ quy chia mảng ra từng vùng rồi sắp xếp
+Note: Dùng kèm hàm swap
 ```pascal
 function part(var a : array of longint; l, r : longint):longint;
 var i, j, pivot : longint;
