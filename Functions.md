@@ -20,9 +20,8 @@ begin
   if b = 0 then
     exit(1);
   if odd(b) then
-    pow := a * sqr(pow(a, (b - 1) div 2))
-  else
-    pow := sqr(pow(a, b div 2));
+    exit(a * sqr(pow(a, (b - 1) div 2)));
+  exit(sqr(pow(a, b div 2)));
 end;
 ```
 ### Tính A ^ B Mod C (Luỹ Thừa Nhanh) (a, b, c <= 10^18)
@@ -71,6 +70,7 @@ var i : longint;
 begin
   for i := 0 to n - 1 do
     write(a[i],' ');
+  writeln;
 end;
 ```
 ### Đảo Giá Trị Của 2 Biến
