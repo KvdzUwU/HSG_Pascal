@@ -1,7 +1,8 @@
 # Function & Procedure
 Một số hàm thông dụng (Ngôn ngữ Pascal)
 
-## Kiểm Tra Số Nguyên Tố
+## Kiểm Tra
+### Số Nguyên Tố
 Ví dụ: 2, 3, 5, 7, 11, 13 ... 
 ```pas
 function Prime(n : longint):boolean;
@@ -13,7 +14,7 @@ begin
       exit(false);
 end;
 ```
-## Kiểm Tra Xâu Đối Xứng
+### Xâu Đối Xứng
 Ví dụ: '12321'
 ```pas
 function kt(st : string):boolean;
@@ -25,7 +26,7 @@ begin
       exit(false);
 end;
 ```
-## Kiểm Tra Xâu Lặp Lại
+### Xâu Lặp Lại
 Ví dụ: 'ABCABC'
 ```pascal
 function kt(st : string):boolean;
@@ -37,24 +38,8 @@ begin
       exit(false);
 end;
 ```
-## Tìm X Có Xuất Hiện Trong Mảng A Không 
-Note: Nên dùng cùng mảng đã sắp xếp tăng dần
-```pascal
-function binarySearch(a : array of longint; l, r, x : longint):boolean;
-begin
-  if r >= l then
-  begin
-    mid := l + (r - l) div 2;
-    if a[mid] = x then
-      binarySearch := true
-    else if a[mid] > x then
-      binarySearch := binarySearch(a, l, mid - 1, x)
-    else binarySearch := binarySearch(a, mid + 1, r, x);
-  end
-  else binarySearch := false;
-end;
-```
-## Đảo Giá Trị Của 2 Biến
+## Mảng (Array)
+### Đảo Giá Trị Của 2 Biến
 Có thể thay kiểu dữ liệu longint thành char để đảo kí tự
 ```pascal
 procedure swap(var a, b : longint);
@@ -65,10 +50,10 @@ begin
   b := t;
 end;
 ```
-## Sắp Xếp Mảng
+### Sắp Xếp Mảng
 Đệ quy chia mảng ra từng vùng rồi sắp xếp
 Note: Dùng kèm hàm swap
-# Quick Sort
+#### Quick Sort
 ```pascal
 function part(var a : array of longint; l, r : longint):longint;
 var i, j, pivot : longint;
@@ -91,5 +76,22 @@ begin
   pi := part(a, l, r);
   quickSort(a, l, pi - 1);
   quickSort(a, pi + 1, r);
+end;
+```
+### Kiểm Tra X Có Xuất Hiện Trong Mảng A Không 
+Note: Nên dùng cùng mảng đã sắp xếp tăng dần
+```pascal
+function binarySearch(a : array of longint; l, r, x : longint):boolean;
+begin
+  if r >= l then
+  begin
+    mid := l + (r - l) div 2;
+    if a[mid] = x then
+      binarySearch := true
+    else if a[mid] > x then
+      binarySearch := binarySearch(a, l, mid - 1, x)
+    else binarySearch := binarySearch(a, mid + 1, r, x);
+  end
+  else binarySearch := false;
 end;
 ```
