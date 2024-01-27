@@ -50,7 +50,8 @@ begin
     else if a[mid] > x then
       binarySearch := binarySearch(a, l, mid - 1, x)
     else binarySearch := binarySearch(a, mid + 1, r, x);
-  end;
+  end
+  else binarySearch := false;
 end;
 ```
 ## Đảo Giá Trị Của 2 Biến
