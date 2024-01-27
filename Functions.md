@@ -1,7 +1,7 @@
 # Function & Procedure
 Một số hàm thông dụng (Ngôn ngữ Pascal)
 
-## Kiểm Tra
+## Toán Tin (int, double)
 ### Số Nguyên Tố
 Ví dụ: 2, 3, 5, 7, 11, 13 ... 
 ```pas
@@ -11,30 +11,6 @@ begin
   ngto := n > 1;
   for i := 2 to trunc(sqrt(n)) do
     if n mod i = 0 then
-      exit(false);
-end;
-```
-### Xâu Đối Xứng
-Ví dụ: '12321'
-```pas
-function kt(st : string):boolean;
-var i : longint;
-begin
-  dx := true;
-  for i := 1 to length(st) div 2 do
-    if st[i] <> st[length(st) - i + 1] then
-      exit(false);
-end;
-```
-### Xâu Lặp Lại
-Ví dụ: 'ABCABC'
-```pascal
-function kt(st : string):boolean;
-var i : longint;
-begin
-  laplai := true;
-  for i := 1 to length(st) div 2 do
-    if st[i] <> st[length(st) div + i] then
       exit(false);
 end;
 ```
@@ -93,5 +69,30 @@ begin
     else binarySearch := binarySearch(a, mid + 1, r, x);
   end
   else binarySearch := false;
+end;
+```
+## Xâu Kí Tự (String)
+### Xâu Đối Xứng
+Ví dụ: '12321'
+```pas
+function kt(st : string):boolean;
+var i : longint;
+begin
+  dx := true;
+  for i := 1 to length(st) div 2 do
+    if st[i] <> st[length(st) - i + 1] then
+      exit(false);
+end;
+```
+### Xâu Lặp Lại
+Ví dụ: 'ABCABC'
+```pascal
+function kt(st : string):boolean;
+var i : longint;
+begin
+  laplai := true;
+  for i := 1 to length(st) div 2 do
+    if st[i] <> st[length(st) div + i] then
+      exit(false);
 end;
 ```
