@@ -63,7 +63,7 @@ end;
 # Sắp Xếp Mảng (Quick Sort)
 Dùng kèm hàm swap
 ```pascal
-function part(var a : array of longint; l, r : longint);
+function part(var a : array of longint; l, r : longint):longint;
 var i, j, pivot : longint;
 begin
   pivot := a[r];
