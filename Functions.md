@@ -67,15 +67,15 @@ function part(var a : array of longint; l, r : longint):longint;
 var i, j, pivot : longint;
 begin
   pivot := a[r];
-  i := l - 1;
+  i := l;
   for j := l to r do
     if a[j] < pivot then
     begin
-      inc(i);
       swap(a[i], a[j]);
+      inc(i);
     end;
-  swap(a[i + 1], a[j]);
-  exit(i + 1);
+  swap(a[i], a[j]);
+  exit(i);
 end;
 procedure quickSort(var a : array of longint; l, r : longint);
 var pi : longint;
