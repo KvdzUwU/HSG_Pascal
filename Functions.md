@@ -3,7 +3,7 @@ Một số hàm thông dụng (Ngôn ngữ Pascal)
 
 ## Kiểm Tra Số Nguyên Tố
 Ví dụ: 2, 3, 5, 7, 11, 13 ... 
-```pascal
+```pas
 function Prime(n : longint):boolean;
 var i : longint;
 begin
@@ -15,7 +15,7 @@ end;
 ```
 ## Kiểm Tra Xâu Đối Xứng
 Ví dụ: '12321'
-```pascal
+```cpp
 function kt(st : string):boolean;
 var i : longint;
 begin
