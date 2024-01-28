@@ -172,7 +172,7 @@ begin
     if a[mid] = x then
       exit(mid);
     if a[mid] < x then
-      l := m + 1
+      l := mid + 1
     else
       r := mid - 1;
   end;
