@@ -157,23 +157,39 @@ begin
   quickSort(a, pi + 1, r);
 end;
 ```
-### Kiểm Tra X Có Xuất Hiện Trong Mảng A Không 
-Tìm kiếm nhị phân O(logn)
-Note: Nên dùng cùng mảng đã sắp xếp tăng dần
+### Tìm Kiếm X Trong Mảng
+Trả về -1 nếu không có xuất hiện, trả về vị trí nếu có
+#### Binary Search (Tìm kiếm nhị phân) O(logn)
+Note: Dùng cùng mảng đã sắp xếp tăng dần
 ```pas
-function binarySearch(a : array of longint; l, r, x : longint):boolean;
+function binarySearch(a : array of longint; l, r, x : longint):longint;
+var mid : longint;
 begin
-  if l > r then exit(false);
-  mid := l + (r - l) div 2;
-  if a[mid] = x then
-    exit(true);
-  if a[mid] > x then
-    exit(binarySearch(a, l, mid - 1, x));
-  exit(binarySearch(a, mid + 1, r, x));
+  while l <= r do
+  begin
+    mid := l + (r - l) div 2;
+    if a[mid] = x then
+      exit(mid);
+    if a[mid] < x then
+      l := m + 1
+    else
+      r := mid - 1;
+  end;
+  exit(-1);
+end;
+```
+#### Linear Search (Tìm Kiếm Thông Thường) O(n)
+```pas
+function Search(a : array of longint; n, x : longint):longint;
+begin
+  for i := 0 to n - 1 do
+    if a[i] = x then
+      exit(i);
+  exit(-1);
 end;
 ```
 ## Xâu Kí Tự (String)
-### Xâu Đối Xứng
+### Kiểm Tra Xâu Đối Xứng
 Ví dụ: '12321'
 ```pas
 function kt(st : string):boolean;
@@ -185,7 +201,7 @@ begin
       exit(false);
 end;
 ```
-### Xâu Lặp Lại
+### Kiểm Tra Xâu Lặp Lại
 Ví dụ: 'ABCABC'
 ```pas
 function kt(st : string):boolean;
