@@ -1,7 +1,7 @@
 # Function & Procedure
 Một số hàm thông dụng (Ngôn ngữ Pascal)
 
-## Toán Tin (int, double)
+## Toán (Int, Double)
 ### Kiểm Tra Số Nguyên Tố
 (n <= qword) (O(sqrt(n))
 ```pas
@@ -59,7 +59,6 @@ end;
 ```
 ## Mảng (Array)
 ### Nhập / Xuất Mảng
-#### Nhập
 Nhập vào n phần tử của mảng A
 ```pas
 procedure readArr(var a : array of longint; n : longint);
@@ -69,8 +68,7 @@ begin
   readln;
 end;
 ```
-#### Xuất
-In ra n phần tử của mảng A
+Xuất ra n phần tử của mảng A
 ```pas
 procedure printArr(a : array of longint; n : longint);
 var i : longint;
