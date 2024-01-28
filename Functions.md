@@ -62,6 +62,7 @@ end;
 Nhập vào n phần tử của mảng A
 ```pas
 procedure readArr(var a : array of longint; n : longint);
+var i : longint;
 begin
   for i := 0 to n - 1 do
     read(a[i]);
@@ -181,6 +182,7 @@ end;
 #### Linear Search (Tìm Kiếm Thông Thường) O(n)
 ```pas
 function Search(a : array of longint; n, x : longint):longint;
+var i : longint;
 begin
   for i := 0 to n - 1 do
     if a[i] = x then
