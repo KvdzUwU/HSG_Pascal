@@ -177,9 +177,8 @@ begin
   end;
 end;
 ```
-## Mảng (Array)
-### Mảng 1 Chiều
-Nhập n phần tử vào mảng
+## Mảng 1 Chiều
+### Nhập Xuất Mảng
 ```pas
 procedure readArr(var a : array of longint; n : longint);
 var i : longint;
@@ -188,10 +187,7 @@ begin
     read(a[i]);
   readln;
 end;
-```
-Xuất n phần tử trong mảng
-```pas
-procedure printArr(a : array of longint; n : longint);
+procedure writeArr(a : array of longint; n : longint);
 var i : longint;
 begin
   for i := 0 to n - 1 do
@@ -199,7 +195,7 @@ begin
   writeln;
 end;
 ```
-#### Đảo Giá Trị Của 2 Biến
+### Đảo Giá Trị Của 2 Biến
 Có thể thay kiểu dữ liệu longint thành char để đảo kí tự
 ```pas
 procedure swap(var a, b : longint);
@@ -210,9 +206,9 @@ begin
   b := t;
 end;
 ```
-#### Thuật Toán Sắp Xếp
+### Thuật Toán Sắp Xếp
 Note: Dùng kèm hàm swap ở trên
-Bubble Sort Sắp Xếp Nổi Bọt O(n) - O(n ^ 2)
+#### Bubble Sort Sắp Xếp Nổi Bọt O(n) - O(n ^ 2)
 ```pas
 procedure bubbleSort(var a : array of longint; n : longint);
 var i, j : longint;
@@ -232,7 +228,8 @@ begin
   end;
 end;
 ```
-Insertion Sort Sắp Xếp Chèn O(n * 2)
+#### Insertion Sort Sắp Xếp Chèn O(n * 2)
+Ưu điểm: Không dùng hàm swap
 ```pas
 procedure insertionSort(var a : array of longint; n : longint);
 var i, j, key : longint;
@@ -250,7 +247,7 @@ begin
   end;
 end;
 ```
-Quick Sort Sắp Xếp Nhanh O(nlog(n))
+#### Quick Sort Sắp Xếp Nhanh O(nlog(n))
 ```pas
 function part(var a : array of longint; l, r : longint):longint;
 var i, j, pivot : longint;
@@ -275,9 +272,9 @@ begin
   quickSort(a, pi + 1, r);
 end;
 ```
-#### Thuật Toán Tìm Kiếm
+### Thuật Toán Tìm Kiếm
 Trả về -1 nếu không có xuất hiện, trả về vị trí nếu có
-Binary Search Tìm Kiếm Nhị Phân O(logn)
+#### Binary Search Tìm Kiếm Nhị Phân O(logn)
 Note: Dùng cùng mảng đã sắp xếp tăng dần
 ```pas
 function binarySearch(a : array of longint; l, r, x : longint):longint;
@@ -296,7 +293,7 @@ begin
   exit(-1);
 end;
 ```
-Linear Search Tìm Kiếm Thông Thường O(n)
+#### Linear Search Tìm Kiếm Thông Thường O(n)
 ```pas
 function Search(a : array of longint; n, x : longint):longint;
 var i : longint;
@@ -305,6 +302,74 @@ begin
     if a[i] = x then
       exit(i);
   exit(-1);
+end;
+```
+## Mảng 2 Chiều
+```pas
+type Arr2C = array[0..100, 0..100] of longintl; // Khai báo kiểu dữ liệu mảng 2 Chiều
+```
+### Nhập Xuất
+Bảng Vuông N * N
+```pas
+procedure readArr(var a : Arr2C; n : longint);
+var i, j : longint;
+begin
+  for i := 0 to n - 1 do
+    for j := 0 to n - 1 do
+      read(a[i, j]);
+  readln;
+end;
+procedure writeArr(a : Arr2C; n : longint);
+var i, j : longint;
+begin
+  for i := 0 to n - 1 do
+    for j := 0 to n - 1 do
+      if j = n - 1 then
+        writeln(a[i, j])
+      else
+        write(a[i, j],' ');
+end;
+```
+Bảng N Dòng M Cột
+```pas
+procedure readArr(var a : Arr2C; n, m : longint);
+var i, j : longint;
+begin
+  for i := 0 to n - 1 do
+    for j := 0 to m - 1 do
+      read(a[i, j]);
+  readln;
+end;
+procedure writeArr(a : Arr2C; n, m : longint);
+var i, j : longint;
+begin
+  for i := 0 to n - 1 do
+    for j := 0 to m - 1 do
+      if j = m - 1 then
+        writeln(a[i, j])
+      else
+        write(a[i, j],' ');
+end;
+```
+Tam Giác Vuông Cân
+```pas
+procedure readArr(var a : Arr2C; n : longint);
+var i, j : longint;
+begin
+  for i := 0 to n - 1 do
+    for j := 0 to i do
+      read(a[i, j]);
+  readln;
+end;
+procedure writeArr(a : Arr2C; n : longint);
+var i, j : longint;
+begin
+  for i := 0 to n - 1 do
+    for j := 0 to i do
+      if j = i then
+        writeln(a[i, j])
+      else
+        write(a[i, j],' ');
 end;
 ```
 ## Xâu Kí Tự (String)
