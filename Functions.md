@@ -22,6 +22,36 @@ begin
   check := a = sqrt(n);
 end;
 ```
+### Sàng SNT Đến 10^6
+```pas
+const maxn = 1000000;
+var p : longint;
+t : array[0..maxn] of boolean;
+a : array[0..maxn] of longint;
+procedure sang;
+var i, j : longint;
+begin
+  fillchar(t, sizeof(t), true);
+  t[0] := false; t[1] := false;
+  for i := 2 to trunc(sqrt(maxn)) do
+    if t[i] then
+    begin
+      j := i * i;
+      while j <= maxn do
+      begin
+        t[j] := false;
+        inc(j, i);
+      end;
+    end;
+  p := 0;
+  for i := 2 to maxn do
+    if t[i] then
+    begin
+      a[p] := i;
+      inc(p);
+    end;
+end;
+```
 ### Kiểm Tra Số Hoàn Thiện O(sqrt(n))
 ```pas
 function check(n : qword):boolean;
@@ -41,6 +71,7 @@ begin
 end;
 ```
 ### Đếm Ước Của N O(sqrt(n))
+Cơ bản
 ```pas
 function uoc(n : qword):longint;
 var i : longint;
@@ -53,6 +84,53 @@ begin
       if n div i = i then
         dec(uoc);
     end;
+end;
+```
+Nâng cao
+```pas
+function check(n : qword):boolean;
+const k = 50;
+var i : longint;
+a : qword;
+begin
+  if n < 4 then
+    exit((n = 2) or (n = 3));
+  if (n <> 2) and (n mod 2 = 0) then
+    exit(false);
+  for i := 1 to k do
+  begin
+    a := 2 + trunc(random()) mod (n - 3);
+    if powMod(a, n - 1, n) <> 1 then
+      exit(false);
+  end;
+  exit(true);
+end;
+function uoc(n : qword):longint;
+var i, s, cnt : longint;
+begin
+  uoc := 1;
+  for i := 0 to p - 1 do
+  begin
+    if a[i] * a[i] * a[i] > n then
+        break;
+      cnt := 0;
+      while n mod a[i] = 0 do
+      begin
+        n := n div a[i];
+        inc(cnt);
+      end;
+      uoc := uoc * (cnt + 1);
+    end;
+  if check(n) then
+    uoc := uoc * 2
+  else
+  begin
+    s := trunc(sqrt(n));
+    if (s = sqrt(n)) and check(s) then
+      uoc := uoc * 3
+    else if (n <> 1) then
+      uoc := uoc * 4;
+  end;
 end;
 ```
 ### Đệ Qui Tính A ^ B O(logb)
