@@ -70,8 +70,8 @@ begin
   check := sum = n;
 end;
 ```
-### Đếm Ước Của N O(sqrt(n))
-Cơ bản
+### Đếm Ước Của N
+#### Cơ bản O(sqrt(n))
 ```pas
 function uoc(n : qword):longint;
 var i : longint;
@@ -86,7 +86,7 @@ begin
     end;
 end;
 ```
-Nâng cao
+#### Nâng cao O(n^1/3)
 ```pas
 function check(n : qword):boolean;
 const k = 50;
