@@ -2,7 +2,7 @@
 Một số hàm thông dụng (Ngôn ngữ Pascal)
 
 ## Toán (Int, Double)
-### Kiểm Tra Số Nguyên Tố O(sqrt(n)
+### Kiểm Tra Số Nguyên Tố O(sqrt(n))
 ```pas
 function Prime(n : qword):boolean;
 var i : longint;
@@ -13,7 +13,7 @@ begin
       exit(false);
 end;
 ```
-### Kiểm Tra Số Chính Phương
+### Kiểm Tra Số Chính Phương O(1)
 ```pas
 function check(n : qword):boolean;
 var a : longint;
@@ -22,7 +22,24 @@ begin
   check := a = sqrt(n);
 end;
 ```
-### Kiểm Tra Số Hoàn Thiện
+### Kiểm Tra Số Hoàn Thiện O(sqrt(n))
+```pas
+function check(n : qword):boolean;
+var i : longint;
+sum : qword;
+begin
+  if n < 2 then exit(false);
+  sum := 1;
+  for i := 2 to trunc(sqrt(n)) do
+    if n mod i = 0 then
+    begin
+      sum := sum + i;
+      if n div i <> i then
+        sum := sum + n div i;
+    end;
+  check := sum = n;
+end;
+```
 ### Đệ Qui Tính A ^ B O(logb)
 ```pas
 function pow(a, b : longint):qword;
