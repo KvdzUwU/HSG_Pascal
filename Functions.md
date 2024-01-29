@@ -300,6 +300,28 @@ begin
       exit(i);
   exit(-1);
 end;
+``` 
+### Min Max
+Note: Nếu đề bài không gây ảnh hưởng dến vị trí thì dùng sắp xếp in ra giá trị đầu và cuối
+```pas
+function max(a : array of longint; n : longint):longint;
+var i : longint;
+begin
+  max := a[0]; // nếu tìm vị trí a[0] -> 0
+  for i := 1 to n - 1 do
+    if max < a[i] then // max -> a[max]
+      max := a[i]; // a[i] -> i
+end;
+```
+```pas
+function min(a : array of longint; n : longint):longint;
+var i : longint;
+begin
+  min := a[0]; // nếu tìm vị trí a[0] -> 0
+  for i := 1 to n - 1 do
+    if min > a[i] then  // min -> a[min]
+      min := a[i]; // a[i] -> i
+end;
 ```
 # Mảng 2 Chiều
 ```pas
