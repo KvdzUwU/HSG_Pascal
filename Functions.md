@@ -1,9 +1,6 @@
-# Function & Procedure
-Một số hàm thông dụng (Ngôn ngữ Pascal)
-
-## Toán (Int, Double)
-### Kiểm Tra
-Số Nguyên Tố O(sqrt(n))
+# Toán (Int, Double)
+## Kiểm Tra
+### Số Nguyên Tố O(sqrt(n))
 ```pas
 function Prime(n : qword):boolean;
 var i : longint;
@@ -14,7 +11,7 @@ begin
       exit(false);
 end;
 ```
-Số Chính Phương O(1)
+### Số Chính Phương O(1)
 ```pas
 function check(n : qword):boolean;
 var a : longint;
@@ -23,7 +20,7 @@ begin
   check := a = sqrt(n);
 end;
 ```
-Số Hoàn Thiện O(sqrt(n))
+### Số Hoàn Thiện O(sqrt(n))
 ```pas
 function check(n : qword):boolean;
 var i : longint;
@@ -41,7 +38,7 @@ begin
   check := sum = n;
 end;
 ```
-### Sàng SNT Đến 10^6
+## Sàng SNT Đến 10^6
 ```pas
 const maxn = 1000000;
 var p : longint;
@@ -71,8 +68,8 @@ begin
     end;
 end;
 ```
-### Thuật Toán Luỹ Thừa
-Đệ Qui A ^ B O(logb)
+## Thuật Toán Luỹ Thừa
+### Đệ Qui A ^ B O(logb)
 ```pas
 function pow(a, b : longint):qword;
 begin
@@ -83,7 +80,7 @@ begin
   exit(sqr(pow(a, b div 2)));
 end;
 ```
-A ^ B Mod C O(logb)
+### A ^ B Mod C O(logb)
 ```pas
 function mulmod(a, b, c : qword):qword;
 begin
@@ -113,9 +110,9 @@ begin
   end;
 end;
 ```
-### Ước Của Số Nguyên
-#### Đếm Ước
-Cơ bản O(sqrt(n))
+## Ước Của Số Nguyên
+### Đếm Ước
+#### Cơ bản O(sqrt(n))
 ```pas
 function uoc(n : qword):longint;
 var i : longint;
@@ -130,7 +127,7 @@ begin
     end;
 end;
 ```
-Nâng cao O(n^1/3)
+#### Nâng cao O(n^1/3)
 ```pas
 function check(n : qword):boolean;
 const k = 50;
@@ -177,8 +174,8 @@ begin
   end;
 end;
 ```
-## Mảng 1 Chiều
-### Nhập Xuất Mảng
+# Mảng 1 Chiều
+## Nhập Xuất Mảng
 ```pas
 procedure readArr(var a : array of longint; n : longint);
 var i : longint;
@@ -195,7 +192,7 @@ begin
   writeln;
 end;
 ```
-### Đảo Giá Trị Của 2 Biến
+## Đảo Giá Trị Của 2 Biến
 Có thể thay kiểu dữ liệu longint thành char để đảo kí tự
 ```pas
 procedure swap(var a, b : longint);
@@ -206,9 +203,9 @@ begin
   b := t;
 end;
 ```
-### Thuật Toán Sắp Xếp
+## Thuật Toán Sắp Xếp
 Note: Dùng kèm hàm swap ở trên
-#### Bubble Sort Sắp Xếp Nổi Bọt O(n) - O(n ^ 2)
+### Bubble Sort Sắp Xếp Nổi Bọt O(n) - O(n ^ 2)
 ```pas
 procedure bubbleSort(var a : array of longint; n : longint);
 var i, j : longint;
@@ -228,7 +225,7 @@ begin
   end;
 end;
 ```
-#### Insertion Sort Sắp Xếp Chèn O(n * 2)
+### Insertion Sort Sắp Xếp Chèn O(n * 2)
 Ưu điểm: Không dùng hàm swap
 ```pas
 procedure insertionSort(var a : array of longint; n : longint);
@@ -247,7 +244,7 @@ begin
   end;
 end;
 ```
-#### Quick Sort Sắp Xếp Nhanh O(nlog(n))
+### Quick Sort Sắp Xếp Nhanh O(nlog(n))
 ```pas
 function part(var a : array of longint; l, r : longint):longint;
 var i, j, pivot : longint;
@@ -272,9 +269,9 @@ begin
   quickSort(a, pi + 1, r);
 end;
 ```
-### Thuật Toán Tìm Kiếm
+## Thuật Toán Tìm Kiếm
 Trả về -1 nếu không có xuất hiện, trả về vị trí nếu có
-#### Binary Search Tìm Kiếm Nhị Phân O(logn)
+### Binary Search Tìm Kiếm Nhị Phân O(logn)
 Note: Dùng cùng mảng đã sắp xếp tăng dần
 ```pas
 function binarySearch(a : array of longint; l, r, x : longint):longint;
@@ -293,7 +290,7 @@ begin
   exit(-1);
 end;
 ```
-#### Linear Search Tìm Kiếm Thông Thường O(n)
+### Linear Search Tìm Kiếm Thông Thường O(n)
 ```pas
 function Search(a : array of longint; n, x : longint):longint;
 var i : longint;
@@ -304,12 +301,12 @@ begin
   exit(-1);
 end;
 ```
-## Mảng 2 Chiều
+# Mảng 2 Chiều
 ```pas
 type Arr2C = array[0..100, 0..100] of longintl; // Khai báo kiểu dữ liệu mảng 2 Chiều
 ```
-### Nhập Xuất
-Bảng Vuông N * N
+## Nhập Xuất
+### Bảng Vuông N * N
 ```pas
 procedure readArr(var a : Arr2C; n : longint);
 var i, j : longint;
@@ -330,7 +327,7 @@ begin
         write(a[i, j],' ');
 end;
 ```
-Bảng N Dòng M Cột
+### Bảng N * M
 ```pas
 procedure readArr(var a : Arr2C; n, m : longint);
 var i, j : longint;
@@ -351,7 +348,7 @@ begin
         write(a[i, j],' ');
 end;
 ```
-Tam Giác Vuông Cân
+### Tam Giác Vuông Cân
 ```pas
 procedure readArr(var a : Arr2C; n : longint);
 var i, j : longint;
@@ -372,9 +369,10 @@ begin
         write(a[i, j],' ');
 end;
 ```
-## Xâu Kí Tự (String)
-### Kiểm Tra
-Đối Xứng Ví dụ: '12321'
+# Xâu Kí Tự (String)
+## Kiểm Tra
+### Đối Xứng 
+Ví dụ: '12321'
 ```pas
 function check(st : string):boolean;
 var i : longint;
@@ -384,7 +382,9 @@ begin
     if st[i] <> st[length(st) - i + 1] then
       exit(false);
 end;
-Xâu Lặp Lại Ví dụ: 'ABCABC'
+```
+### Xâu Lặp Lại 
+Ví dụ: 'ABCABC'
 ```pas
 function check(st : string):boolean;
 var i : longint;
@@ -395,7 +395,7 @@ begin
       exit(false);
 end;
 ```
-### Hoán vị Xâu
+## Hoán vị Xâu
 Hoán vị một xâu theo đoạn mã n phần tử là các vị trí mới (2023 AG)
 ```pas
 function hv(st : string; a : array of longint; n : longint):string;
