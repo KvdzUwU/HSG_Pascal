@@ -175,9 +175,8 @@ begin
 end;
 ```
 ## Mảng (Array)
-### Nhập / Xuất Mảng
-#### Mảng 1 Chiều
-##### Nhập vào N phần tử
+### Mảng 1 Chiều
+Nhập n phần tử vào mảng
 ```pas
 procedure readArr(var a : array of longint; n : longint);
 var i : longint;
@@ -187,7 +186,7 @@ begin
   readln;
 end;
 ```
-##### Xuất ra N phần tử
+Xuất n phần tử trong mảng
 ```pas
 procedure printArr(a : array of longint; n : longint);
 var i : longint;
@@ -197,7 +196,7 @@ begin
   writeln;
 end;
 ```
-### Đảo Giá Trị Của 2 Biến
+#### Đảo Giá Trị Của 2 Biến
 Có thể thay kiểu dữ liệu longint thành char để đảo kí tự
 ```pas
 procedure swap(var a, b : longint);
@@ -208,10 +207,9 @@ begin
   b := t;
 end;
 ```
-### Sắp Xếp Mảng
+#### Sắp Xếp Mảng
 Note: Dùng kèm hàm swap ở trên
-#### Bubble Sort
-Sắp xếp nổi bọt (Tốt nhất: O(n) trung bình-xấu: O(n ^ 2))
+Bubble Sort Sắp Xếp Nổi Bọt O(n) - O(n ^ 2)
 ```pas
 procedure bubbleSort(var a : array of longint; n : longint);
 var i, j : longint;
@@ -231,8 +229,7 @@ begin
   end;
 end;
 ```
-#### Insertion Sort Sắp Xếp Chèn O(n * 2)
-Ưu điểm: không dùng đến swap để hoán đổi vị trí
+Insertion Sort Sắp Xếp Chèn O(n * 2)
 ```pas
 procedure insertionSort(var a : array of longint; n : longint);
 var i, j, key : longint;
@@ -250,7 +247,7 @@ begin
   end;
 end;
 ```
-#### Quick Sort Sắp Xếp Nhanh O(nlog(n))
+Quick Sort Sắp Xếp Nhanh O(nlog(n))
 ```pas
 function part(var a : array of longint; l, r : longint):longint;
 var i, j, pivot : longint;
@@ -275,9 +272,9 @@ begin
   quickSort(a, pi + 1, r);
 end;
 ```
-### Tìm Kiếm X Trong Mảng
+#### Thuật Toán Tìm Kiếm
 Trả về -1 nếu không có xuất hiện, trả về vị trí nếu có
-#### Binary Search (Tìm kiếm nhị phân) O(logn)
+Binary Search Tìm Kiếm Nhị Phân O(logn)
 Note: Dùng cùng mảng đã sắp xếp tăng dần
 ```pas
 function binarySearch(a : array of longint; l, r, x : longint):longint;
@@ -296,7 +293,7 @@ begin
   exit(-1);
 end;
 ```
-#### Linear Search (Tìm Kiếm Thông Thường) O(n)
+Linear Search Tìm Kiếm Thông Thường O(n)
 ```pas
 function Search(a : array of longint; n, x : longint):longint;
 var i : longint;
@@ -308,8 +305,8 @@ begin
 end;
 ```
 ## Xâu Kí Tự (String)
-### Kiểm Tra Xâu Đối Xứng
-Ví dụ: '12321'
+### Kiểm Tra
+Đối Xứng Ví dụ: '12321'
 ```pas
 function check(st : string):boolean;
 var i : longint;
@@ -319,9 +316,7 @@ begin
     if st[i] <> st[length(st) - i + 1] then
       exit(false);
 end;
-```
-### Kiểm Tra Xâu Lặp Lại
-Ví dụ: 'ABCABC'
+Xâu Lặp Lại Ví dụ: 'ABCABC'
 ```pas
 function check(st : string):boolean;
 var i : longint;
