@@ -27,7 +27,7 @@ end;
 const maxn = 1000000;
 var p : longint;
 t : array[0..maxn] of boolean;
-a : array[0..maxn] of longint;
+a : array[0..(maxn div 10)] of longint;
 procedure sang;
 var i, j : longint;
 begin
