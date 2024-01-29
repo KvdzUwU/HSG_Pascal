@@ -40,6 +40,21 @@ begin
   check := sum = n;
 end;
 ```
+### Đếm Ước Của N O(sqrt(n))
+```pas
+function uoc(n : qword):longint;
+var i : longint;
+begin
+  uoc := 0;
+  for i := 1 to trunc(sqrt(n)) do
+    if n mod i = 0 then
+    begin
+      inc(uoc, 2);
+      if n div i = i then
+        dec(uoc);
+    end;
+end;
+```
 ### Đệ Qui Tính A ^ B O(logb)
 ```pas
 function pow(a, b : longint):qword;
