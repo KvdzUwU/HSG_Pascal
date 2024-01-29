@@ -2,8 +2,7 @@
 Một số hàm thông dụng (Ngôn ngữ Pascal)
 
 ## Toán (Int, Double)
-### Kiểm Tra Số Nguyên Tố
-(n <= qword) (O(sqrt(n))
+### Kiểm Tra Số Nguyên Tố O(sqrt(n)
 ```pas
 function Prime(n : qword):boolean;
 var i : longint;
@@ -14,8 +13,9 @@ begin
       exit(false);
 end;
 ```
-### Tính A ^ B
-Đệ qui O(logb) (a ^ b <= 10^18)
+### Kiểm Tra Số Chính Phương
+
+### Đệ Qui Tính A ^ B O(logb)
 ```pas
 function pow(a, b : longint):qword;
 begin
@@ -26,8 +26,7 @@ begin
   exit(sqr(pow(a, b div 2)));
 end;
 ```
-### Tính A ^ B Mod C
-Luỹ Thừa Nhanh O(logb) (a, b, c <= 10^18) (2023 AG)
+### Luỹ Thừa Nhanh Tính A ^ B Mod C O(logb)
 ```pas
 function mulmod(a, b, c : qword):qword;
 begin
@@ -113,8 +112,8 @@ begin
   end;
 end;
 ```
-#### Insertion Sort
-Sắp xếp chèn (O(n * 2)) (Ưu điểm: không dùng đến swap để hoán đổi vị trí)
+#### Insertion Sort Sắp Xếp Chèn O(n * 2)
+Ưu điểm: không dùng đến swap để hoán đổi vị trí
 ```pas
 procedure insertionSort(var a : array of longint; n : longint);
 var i, j, key : longint;
@@ -132,8 +131,7 @@ begin
   end;
 end;
 ```
-#### Quick Sort
-Sắp xếp nhanh (trung bình: O(nlog(n)) xấu: O(n ^ 2))
+#### Quick Sort Sắp Xếp Nhanh O(nlog(n))
 ```pas
 function part(var a : array of longint; l, r : longint):longint;
 var i, j, pivot : longint;
