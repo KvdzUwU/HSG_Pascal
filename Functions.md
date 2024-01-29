@@ -14,7 +14,15 @@ begin
 end;
 ```
 ### Kiểm Tra Số Chính Phương
-
+```pas
+function check(n : qword):boolean;
+var a : longint;
+begin
+  a := trunc(sqrt(n));
+  check := a = sqrt(n);
+end;
+```
+### Kiểm Tra Số Hoàn Thiện
 ### Đệ Qui Tính A ^ B O(logb)
 ```pas
 function pow(a, b : longint):qword;
@@ -192,10 +200,10 @@ end;
 ### Kiểm Tra Xâu Đối Xứng
 Ví dụ: '12321'
 ```pas
-function kt(st : string):boolean;
+function check(st : string):boolean;
 var i : longint;
 begin
-  kt := true;
+  check := true;
   for i := 1 to length(st) div 2 do
     if st[i] <> st[length(st) - i + 1] then
       exit(false);
@@ -204,10 +212,10 @@ end;
 ### Kiểm Tra Xâu Lặp Lại
 Ví dụ: 'ABCABC'
 ```pas
-function kt(st : string):boolean;
+function check(st : string):boolean;
 var i : longint;
 begin
-  kt := true;
+  check := true;
   for i := 1 to length(st) div 2 do
     if st[i] <> st[length(st) div 2 + i] then
       exit(false);
