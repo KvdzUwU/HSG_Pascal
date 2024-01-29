@@ -2,7 +2,8 @@
 Một số hàm thông dụng (Ngôn ngữ Pascal)
 
 ## Toán (Int, Double)
-### Kiểm Tra Số Nguyên Tố O(sqrt(n))
+### Kiểm Tra
+Số Nguyên Tố O(sqrt(n))
 ```pas
 function Prime(n : qword):boolean;
 var i : longint;
@@ -13,13 +14,31 @@ begin
       exit(false);
 end;
 ```
-### Kiểm Tra Số Chính Phương O(1)
+Số Chính Phương O(1)
 ```pas
 function check(n : qword):boolean;
 var a : longint;
 begin
   a := trunc(sqrt(n));
   check := a = sqrt(n);
+end;
+```
+Số Hoàn Thiện O(sqrt(n))
+```pas
+function check(n : qword):boolean;
+var i : longint;
+sum : qword;
+begin
+  if n < 2 then exit(false);
+  sum := 1;
+  for i := 2 to trunc(sqrt(n)) do
+    if n mod i = 0 then
+    begin
+      sum := sum + i;
+      if n div i <> i then
+        sum := sum + n div i;
+    end;
+  check := sum = n;
 end;
 ```
 ### Sàng SNT Đến 10^6
@@ -52,26 +71,51 @@ begin
     end;
 end;
 ```
-### Kiểm Tra Số Hoàn Thiện O(sqrt(n))
+### Thuật Toán Luỹ Thừa
+Đệ Qui A ^ B O(logb)
 ```pas
-function check(n : qword):boolean;
-var i : longint;
-sum : qword;
+function pow(a, b : longint):qword;
 begin
-  if n < 2 then exit(false);
-  sum := 1;
-  for i := 2 to trunc(sqrt(n)) do
-    if n mod i = 0 then
-    begin
-      sum := sum + i;
-      if n div i <> i then
-        sum := sum + n div i;
-    end;
-  check := sum = n;
+  if b = 0 then
+    exit(1);
+  if odd(b) then
+    exit(a * sqr(pow(a, (b - 1) div 2)));
+  exit(sqr(pow(a, b div 2)));
 end;
 ```
-### Đếm Ước Của N
-#### Cơ bản O(sqrt(n))
+A ^ B Mod C O(logb)
+```pas
+function mulmod(a, b, c : qword):qword;
+begin
+  mulmod := 0;
+  while b > 0 do
+  begin
+    if odd(b) then
+      mulmod := (mulmod + a) mod c;
+    a := (a * 2) mod c;
+    b := b div 2;
+  end;
+end;
+function powMod(a, b, c : qword):qword;
+begin
+  a := a mod c;
+  if a = 0 then
+    exit(0);
+  powMod := 1;
+  if Prime(c) then
+    b := b mod (c - 1);
+  while b > 0 do
+  begin
+    if odd(b) then
+      powMod := mulmod(powMod, a, c);
+    a := mulmod(a, a, c);
+    b := b div 2;
+  end;
+end;
+```
+### Ước Của Số Nguyên
+#### Đếm Ước
+Cơ bản O(sqrt(n))
 ```pas
 function uoc(n : qword):longint;
 var i : longint;
@@ -86,7 +130,7 @@ begin
     end;
 end;
 ```
-#### Nâng cao O(n^1/3)
+Nâng cao O(n^1/3)
 ```pas
 function check(n : qword):boolean;
 const k = 50;
@@ -133,47 +177,6 @@ begin
   end;
 end;
 ```
-### Đệ Qui Tính A ^ B O(logb)
-```pas
-function pow(a, b : longint):qword;
-begin
-  if b = 0 then
-    exit(1);
-  if odd(b) then
-    exit(a * sqr(pow(a, (b - 1) div 2)));
-  exit(sqr(pow(a, b div 2)));
-end;
-```
-### Luỹ Thừa Nhanh Tính A ^ B Mod C O(logb)
-```pas
-function mulmod(a, b, c : qword):qword;
-begin
-  mulmod := 0;
-  while b > 0 do
-  begin
-    if odd(b) then
-      mulmod := (mulmod + a) mod c;
-    a := (a * 2) mod c;
-    b := b div 2;
-  end;
-end;
-function powMod(a, b, c : qword):qword;
-begin
-  a := a mod c;
-  if a = 0 then
-    exit(0);
-  powMod := 1;
-  if Prime(c) then
-    b := b mod (c - 1);
-  while b > 0 do
-  begin
-    if odd(b) then
-      powMod := mulmod(powMod, a, c);
-    a := mulmod(a, a, c);
-    b := b div 2;
-  end;
-end;
-```
 ## Mảng (Array)
 ### Mảng 1 Chiều
 Nhập n phần tử vào mảng
@@ -207,7 +210,7 @@ begin
   b := t;
 end;
 ```
-#### Sắp Xếp Mảng
+#### Thuật Toán Sắp Xếp
 Note: Dùng kèm hàm swap ở trên
 Bubble Sort Sắp Xếp Nổi Bọt O(n) - O(n ^ 2)
 ```pas
