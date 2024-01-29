@@ -176,7 +176,8 @@ end;
 ```
 ## Mảng (Array)
 ### Nhập / Xuất Mảng
-Nhập vào n phần tử của mảng A
+#### Mảng 1 Chiều
+##### Nhập vào N phần tử
 ```pas
 procedure readArr(var a : array of longint; n : longint);
 var i : longint;
@@ -186,7 +187,7 @@ begin
   readln;
 end;
 ```
-Xuất ra n phần tử của mảng A
+##### Xuất ra N phần tử
 ```pas
 procedure printArr(a : array of longint; n : longint);
 var i : longint;
