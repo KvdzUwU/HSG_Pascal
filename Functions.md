@@ -325,7 +325,7 @@ end;
 ```
 # Mảng 2 Chiều
 ```pas
-type Arr2C = array[0..100, 0..100] of longintl; // Khai báo kiểu dữ liệu mảng 2 Chiều
+type Arr2C = array[0..100, 0..100] of longint; // Khai báo kiểu dữ liệu mảng 2 Chiều
 ```
 ## Nhập Xuất
 ### Bảng Vuông N * N
