@@ -68,6 +68,25 @@ begin
     end;
 end;
 ```
+## Đệ Qui Giai Thừa
+### Tính N!
+```pas
+function gt(n : longint):qword;
+begin
+  if n = 1 then
+    exit(1);
+  exit(n * gt(n - 1));
+end;
+```
+### Tính N!!
+```pas
+function gt(n : longint):qword;
+begin
+  if (n = 1) or (n = 0) then
+    exit(1);
+  exit(n * gt(n - 2));
+end;
+```
 ## Thuật Toán Luỹ Thừa
 ### Đệ Qui A ^ B O(logb)
 ```pas
