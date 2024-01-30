@@ -129,7 +129,7 @@ begin
   end;
 end;
 ```
-## Ước Và Bội  Của Số Nguyên
+## Ước Và Bội Của Số Nguyên
 ### Đếm Ước
 #### Cơ bản O(sqrt(n))
 ```pas
@@ -191,6 +191,23 @@ begin
     else if (n <> 1) then
       uoc := uoc * 4;
   end;
+end;
+```
+### Tổng Các Ước O(sqrt(n))
+```pas
+function sumuoc(n : qword):qword;
+var i : longint;
+begin
+  if n = 1 then exit(1);
+  sumuoc := n + 1;
+  if Prime(n) then exit;
+  for i := 2 to trunc(sqrt(n)) do
+    if n mod i = 0 then
+    begin
+      sumuoc := sumuoc + i;
+      if n div i <> i then
+        sumuoc := sumuoc + n div i;
+    end;
 end;
 ```
 ### UCLN / BCNN Của 2 Số Nguyên
