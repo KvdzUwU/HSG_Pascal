@@ -223,6 +223,74 @@ begin
   bcnn := a * (b div ucln(a, b));
 end;
 ```
+## Fibonacci
+### Số Fibonacci Thứ N 
+#### Phương Pháp Lặp O(n)
+```pas
+function fib(n : longint):longint;
+var a, b, i : longint;
+begin
+  a := 0;
+  b := 1;
+  for i := 1 to n do
+  begin
+    b := a + b;
+    a := b - a;
+  end;
+  fib := a;
+end;
+```
+#### Phương Pháp Ma Trận O(logn)
+```pas
+type
+  matrix = array[1..2, 1..2] of qword;
+
+function mul(a, b : matrix; modd : qword):matrix;
+var
+  i, j, k : longint;
+  res : matrix;
+begin
+  for i := 1 to 2 do
+    for j := 1 to 2 do
+    begin
+      res[i][j] := 0;
+      for k := 1 to 2 do
+        res[i][j] := (res[i][j] + a[i][k] * b[k][j]) mod modd;
+    end;
+  exit(res);
+end;
+
+function power(a : matrix; b, modd : qword):matrix;
+var
+  res : matrix;
+  i, j : longint;
+begin
+  for i := 1 to 2 do
+    for j := 1 to 2 do
+      if i = j then res[i][j] := 1
+      else res[i][j] := 0;
+
+  while b > 0 do
+  begin
+    if odd(b) then res := mul(res, a, modd);
+    a := mul(a, a, modd);
+    b := b div 2;
+  end;
+
+  exit(res);
+end;
+
+function fib(n : qword):qword;
+var
+  a : matrix;
+begin
+  a[1][1] := 1; a[1][2] := 1;
+  a[2][1] := 1; a[2][2] := 0;
+
+  a := power(a, n, high(qword));
+  exit(a[2][1]);
+end;
+```
 # Mảng 1 Chiều
 ## Nhập Xuất Mảng
 ```pas
