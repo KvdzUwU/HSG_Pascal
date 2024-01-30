@@ -210,7 +210,7 @@ begin
     end;
 end;
 ```
-### UCLN / BCNN Của 2 Số Nguyên
+### UCLN / BCNN Của 2 Số Nguyên O(log(min(a, b)))
 ```pas
 function ucln(a, b : qword):qword;
 begin
