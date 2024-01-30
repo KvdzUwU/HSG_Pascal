@@ -129,7 +129,7 @@ begin
   end;
 end;
 ```
-## Ước Của Số Nguyên
+## Ước Và Bội  Của Số Nguyên
 ### Đếm Ước
 #### Cơ bản O(sqrt(n))
 ```pas
@@ -191,6 +191,19 @@ begin
     else if (n <> 1) then
       uoc := uoc * 4;
   end;
+end;
+```
+### UCLN / BCNN Của 2 Số Nguyên
+```pas
+function ucln(a, b : qword):qword;
+begin
+  if b = 0 then
+    exit(a);
+  exit(ucln(b, a mod b));
+end;
+function bcnn(a, b : qword):qword;
+begin
+  bcnn := a * (b div ucln(a, b));
 end;
 ```
 # Mảng 1 Chiều
