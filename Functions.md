@@ -43,7 +43,7 @@ end;
 const maxn = 1000000;
 var p : longint;
 t : array[0..maxn] of boolean;
-a : array[0..(maxn div 10)] of longint;
+a : array[0..(maxn div 10)] of qword;
 procedure sang;
 var i, j : longint;
 begin
