@@ -1,4 +1,3 @@
-```
 # Câu 1
 ![](./De/THT/2018/1.png)
 ## Pascal
@@ -35,9 +34,7 @@ begin
   try(1);
 end.
 ```
-
 ## C++
-
 ```cpp
 #include<bits/stdc++.h>
 using namespace std;
@@ -72,13 +69,9 @@ int main() {
     return 0;
 }
 ```
-
 # Câu 2
-
 ![](./De/THT/2018/2.png)
-
 ## Pascal
-
 ```pas
 program Cau2;
 type int = integer;
@@ -112,9 +105,7 @@ begin
   try(1);
 end.
 ```
-
 ## C++
-
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -149,11 +140,67 @@ int main() {
     return 0;
 }
 ```
-
-# Câu 3
-
+# Câu 3 Sàng SNT Đến 10^7 (1e7 + 1)
 ![](./De/THT/2018/3.png)
-
+## Pascal
+```pas
+program Cau3;
+uses crt;
+const maxn = 10000000;
+var i, m, n : longint;
+p : array[0..maxn] of boolean;
+procedure sang;
+var i, j : longint;
+begin
+  fillchar(p, sizeof(p), true);
+  p[0] := false; p[1] := false;
+  for i := 2 to trunc(sqrt(maxn)) do
+    if p[i] then
+    begin
+      j := i * i;
+      while j <= maxn do
+      begin
+        p[j] := false;
+        j := j + i;
+      end;
+    end;
+end;
+begin
+  sang;
+  assign(input, 'Cau3.inp'); reset(input);
+  assign(output, 'Cau3.out'); rewrite(output);
+  readln(m, n);
+  for i := m to n - 2 do
+    if p[i] and p[i + 2] then
+      writeln(i,' ',i + 2);
+end.
 ```
+## C++
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
 
+const int maxn = 1e7 + 1;
+int p[maxn];
+int m, n;
+
+void sang() {
+    fill_n(p, size(p), 1);
+    p[0] = p[1] = 0;
+    for (int i = 2; i * i <= maxn; i++) 
+        if (p[i])
+            for (int j = i * i; j <= maxn; j += i)
+                p[j] = 0;
+}
+
+int main() {
+    sang();
+    freopen("Cau3.inp", "r", stdin);
+    freopen("Cau3.out", "w", stdout);
+    cin >> m >> n;
+    for (int i = m; i <= n - 2; i++)
+        if (p[i] && p[i + 2])
+            cout << i << ' ' << i + 2 << '\n';
+    return 0;
+}
 ```
