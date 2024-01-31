@@ -1,5 +1,5 @@
-# Câu 1 Tin Học Trẻ 2018 AG
-![](./De/2018_1.png)
+# Câu 1
+![](./De/THT/2018/1.png)
 ## Pascal
 ```pas
 program Cau1;
@@ -69,8 +69,8 @@ int main() {
     return 0;
 }
 ```
-# Câu 2 Tin Học Trẻ 2018 AG
-![](./De/2018_2.png)
+# Câu 2
+![](./De/THT/2018/2.png)
 ## Pascal
 ```pas
 program Cau2;
@@ -140,3 +140,5 @@ int main() {
     return 0;
 }
 ```
+# Câu 3
+![](./De/THT/2018/3.png)
