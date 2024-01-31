@@ -37,7 +37,6 @@ end.
 ## C++
 ```cpp
 #include<bits/stdc++.h>
-
 using namespace std;
 
 int n, k;
@@ -66,6 +65,77 @@ int main() {
     freopen("Cau1.out", "w", stdout);
     cin >> n >> k;
     a[0] = 0;
+    tryFunc(1);
+    return 0;
+}
+```
+# Câu 2 Tin Học Trẻ 2018 AG
+![](./De/2018_2.png)
+## Pascal
+```pas
+program Cau2;
+type int = integer;
+var m, n : int;
+a : array[0..100] of int;
+procedure print;
+var i : int;
+begin
+  for i := 1 to n do
+    write(a[i],' ');
+  writeln;
+end;
+procedure try(i : int);
+var j : int;
+begin
+  for j := a[i - 1] downto 0 do
+  begin
+    a[i] := j;
+    m := m - j;
+    if (i < n) then
+      try(i + 1)
+    else if m = 0 then print;
+    m := m + j;
+  end;
+end;
+begin
+  assign(input, 'Cau2.inp'); reset(input);
+  assign(output, 'Cau2.out'); rewrite(output);
+  readln(m, n);
+  a[0] := m;
+  try(1);
+end.
+```
+## C++
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int m, n;
+int a[101];
+
+void print() {
+    for (int i = 1; i <= n; i++)
+        cout << a[i] << ' ';
+    cout << '\n';
+}
+
+void tryFunc(int i) {
+    for (int j = a[i - 1]; j >= 0; j--) {
+        a[i] = j;
+        m -= j;
+        if (i < n)
+            tryFunc(i + 1);
+        else if (m == 0)
+            print();
+        m += j;
+    }
+}
+
+int main() {
+    freopen("Cau2.inp", "r", stdin);
+    freopen("Cau2.out", "w", stdout);
+    cin >> m >> n;
+    a[0] = m;
     tryFunc(1);
     return 0;
 }
