@@ -1,5 +1,6 @@
-![Câu 1 Tin Học Trẻ 2018 AG](./De/2018_1.png)
-# Pascal
+# Câu 1 Tin Học Trẻ 2018 AG
+![](./De/2018_1.png)
+## Pascal
 ```pas
 program Cau1;
 type int = integer;
@@ -33,4 +34,4 @@ begin
   try(1);
 end.
 ```
-#C++
+## C++
