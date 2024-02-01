@@ -61,6 +61,8 @@ void tryFunc(int i) {
 }
 
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);  cout.tie(0);
     freopen("Cau1.inp", "r", stdin);
     freopen("Cau1.out", "w", stdout);
     cin >> n >> k;
@@ -132,6 +134,8 @@ void tryFunc(int i) {
 }
 
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);  cout.tie(0);
     freopen("Cau2.inp", "r", stdin);
     freopen("Cau2.out", "w", stdout);
     cin >> m >> n;
@@ -195,6 +199,8 @@ void sang() {
 }
 
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);  cout.tie(0);
     sang();
     freopen("Cau3.inp", "r", stdin);
     freopen("Cau3.out", "w", stdout);
@@ -261,4 +267,55 @@ begin
   writeln(max);
   writeArr(luu, n);
 end.
+```
+## C++
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int n, m = INT_MIN, sum = 0;
+int a[50][50], b[50], luu[50];
+
+void readArr(int a[50][50], int n) {
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= i; j++)
+            cin >> a[i][j];
+}
+
+void writeArr(int a[50], int n) {
+    for (int i = 1; i <= n; i++)
+        cout << a[i] << ' ';
+    cout << '\n';
+}
+
+void copyArr(int a[], int b[], int s) {
+    copy(b, b + s, a);
+}
+
+void tryFunc(int i, int k) {
+    for (int j = k; j <= k + 1; j++) {
+        sum += a[i][j];
+        b[i] = a[i][j];
+        if (i < n)
+            tryFunc(i + 1, j);
+        else
+            if (m < sum) {
+                m = sum;
+                copyArr(luu, b, n + 1);
+            }
+        sum -= a[i][j];
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);  cout.tie(0);
+    freopen("Bai01.inp", "r", stdin);
+    freopen("Bai01.out", "w", stdout);
+    cin >> n;
+    readArr(a, n);
+    tryFunc(1, 1);
+    cout << m << '\n';
+    writeArr(luu, n);
+}
 ```
