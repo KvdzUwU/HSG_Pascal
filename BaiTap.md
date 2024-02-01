@@ -1,4 +1,4 @@
-# Câu 1
+# Câu 1 Tin Học Trẻ 2018 AG
 ![](./De/THT/2018/1.png)
 ## Pascal
 ```pas
@@ -69,7 +69,7 @@ int main() {
     return 0;
 }
 ```
-# Câu 2
+# Câu 2 Tin Học Trẻ 2018 AG
 ![](./De/THT/2018/2.png)
 ## Pascal
 ```pas
@@ -140,8 +140,9 @@ int main() {
     return 0;
 }
 ```
-# Câu 3 Sàng SNT Đến 10^7 (1e7 + 1)
+# Câu 3 Tin Học Trẻ 2018 AG
 ![](./De/THT/2018/3.png)
+Sàng SNT Đến 10^7 (1e7 + 1)
 ## Pascal
 ```pas
 program Cau3;
@@ -203,4 +204,61 @@ int main() {
             cout << i << ' ' << i + 2 << '\n';
     return 0;
 }
+```
+# Bài 1 Tin Học Trẻ 2021 AG
+![](./De/THT/2021/1.png)
+## Pascal
+```pas
+program Bai;
+type
+  int = longint;
+  Arr2C = array[1..50, 1..50] of int;
+  arr = array[1..50] of int;
+var n, sum, max : int;
+a : Arr2C;
+b, luu : arr;
+procedure readArr(var a : Arr2C; n : int);
+var i, j : int;
+begin
+  for i := 1 to n do
+    for j := 1 to i do
+      read(a[i, j]);
+  readln;
+end;
+procedure writeArr(a : arr; n : int);
+var i : int;
+begin
+  for i := 1 to n do
+    write(a[i],' ');
+  writeln;
+end;
+procedure try(i, k : int);
+var j : int;
+begin
+  for j := k to k + 1 do
+  begin
+    sum := sum + a[i, j];
+    b[i] := a[i, j];
+    if i < n then
+      try(i + 1, j)
+    else
+      if max < sum then
+      begin
+        max := sum;
+        luu := b;
+      end;
+    sum := sum - a[i, j];
+  end;
+end;
+begin
+  assign(input, 'Bai01.inp'); reset(input);
+  assign(output, 'Bai01.out'); rewrite(output);
+  readln(n);
+  readArr(a, n);
+  max := -maxlongint;
+  sum := 0;
+  try(1, 1);
+  writeln(max);
+  writeArr(luu, n);
+end.
 ```
