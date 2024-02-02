@@ -36,7 +36,7 @@ end.
 ```
 ## C++
 ```cpp
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int n, k;
@@ -397,13 +397,15 @@ void tryFunc(int i) {
 }
 
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);  cout.tie(0);
     freopen("Bai02.inp", "r", stdin);
     freopen("Bai02.out", "w", stdout);
     cin >> n >> s;
     for (int i = 1; i <= n; i++)
         cin >> a[i];
     tryFunc(1);
-    if (k =0)
+    if (k == 0)
         cout << "khong co day con co tong bang " << s;
     return 0;
 }
