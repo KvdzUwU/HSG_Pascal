@@ -319,3 +319,93 @@ int main() {
     writeArr(luu, n);
 }
 ```
+# Bài 2 Tin Học Trẻ 2021 AG
+![](./De/THT/2021/2.png)
+## Pascal
+```pas
+program Bai02;
+type int = longint;
+arr = array[1..100] of longint;
+var n, s, k, sum : int;
+a, b : arr;
+procedure readArr(var a : arr; n : int);
+var i : int;
+begin
+  for i := 1 to n do
+    read(a[i]);
+  readln;
+end;
+procedure print;
+var i : int;
+begin
+  for i := 1 to n do
+    if b[i] = 1 then
+      write(a[i],' ');
+  writeln;
+  k := 1;
+end;
+procedure try(i : int);
+var j : int;
+begin
+  for j := 1 downto 0 do
+  begin
+    b[i] := j;
+    s := s - a[i] * b[i];
+    if s = 0 then
+      print
+    else if (i < n) and (s > 0) then
+      try(i + 1);
+    s := s + a[i] * b[i];
+  end;
+end;
+begin
+  assign(input, 'BAI02.INP'); reset(input);
+  assign(output, 'BAI02.OUT'); rewrite(output);
+  readln(n, s);
+  k := 0;
+  readArr(a, n);
+  try(1);
+  if k = 0 then
+    write('khong co day con co tong bang ',s);
+end.
+```
+## C++
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int n, s, k = 0;
+int a[101], b[101];
+
+void print() {
+    for (int i = 1; i <= n; i++)
+        if (b[i])
+            cout << a[i] << ' ';
+    cout << '\n';
+    k = 1;
+}
+
+void tryFunc(int i) {
+    for (int j = 1; j >= 0; j--) {
+        b[i] = j;
+        s -= (a[i] * b[i]);
+        if (s == 0)
+            print();
+        else if (i < n && s > 0)
+            tryFunc(i + 1);
+        s += (a[i] * b[i]);
+    }
+}
+
+int main() {
+    freopen("Bai02.inp", "r", stdin);
+    freopen("Bai02.out", "w", stdout);
+    cin >> n >> s;
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
+    tryFunc(1);
+    if (k =0)
+        cout << "khong co day con co tong bang " << s;
+    return 0;
+}
+```
