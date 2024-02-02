@@ -410,3 +410,11 @@ int main() {
     return 0;
 }
 ```
+# Bài 2 Tin Học Trẻ 2023 AG
+![](./De/THT/2023/2.png)
+## Pascal
+```pas
+```
+## C++
+```cpp
+```
