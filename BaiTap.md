@@ -146,7 +146,6 @@ int main() {
 ```
 # Câu 3 Tin Học Trẻ 2018 AG
 ![](./De/THT/2018/3.png)
-Sàng SNT Đến 10^7 (1e7 + 1)
 ## Pascal
 ```pas
 program Cau3;
