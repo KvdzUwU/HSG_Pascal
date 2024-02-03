@@ -413,7 +413,7 @@ int main() {
 # Bài 2 Tin Học Trẻ 2023 AG
 ![](./De/THT/2023/2.png)
 ## Pascal
-```pas
+```pascal
   program Bai02;
 uses crt;
 type int = longint;
