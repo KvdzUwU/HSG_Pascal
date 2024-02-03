@@ -414,6 +414,77 @@ int main() {
 ![](./De/THT/2023/2.png)
 ## Pascal
 ```pas
+  program Bai02;
+uses crt;
+type int = longint;
+arr = array[0..9] of int;
+var i, n : int;
+ch : char;
+st, s : string;
+a : arr;
+function hv(st : string; a : arr; n : int):string;
+var i : int;
+begin
+  hv := '';
+  for i := 1 to n do
+    hv := hv + st[a[i]];
+end;
+function mahoa(st : string; a : arr; n : int):string;
+var i : int;
+begin
+  mahoa := '';
+  for i := 1 to (n - (length(st) mod n)) mod n do
+    st := st + ' ';
+  for i := 1 to length(st) div n do
+    mahoa := mahoa + hv(copy(st, (i - 1) * n + 1, n), a, n);
+end;
+function xauchung(a, b : string):string;
+var i, j, m, n, len, r, c : int;
+dp : array[1..255, 1..255] of int;
+begin
+  m := length(a);
+  n := length(b);
+  for i := 1 to m do
+    dp[i][1] := 0;
+  for j := 1 to n do
+    dp[1][j] := 0;
+  len := 0;
+  for i := 2 to m do
+    for j := 2 to n do
+      if a[i - 1] = b[j - 1] then
+      begin
+        dp[i][j] := dp[i - 1][j - 1] + 1;
+        if dp[i][j] > len then
+        begin
+          len := dp[i][j];
+          r := i;
+          c := j;
+        end;
+      end
+      else dp[i][j] := 0;
+  xauchung := '';
+  while dp[r][c] <> 0 do
+  begin
+    xauchung := a[r - 1] + xauchung;
+    dec(r);
+    dec(c);
+  end;
+end;
+begin
+  clrscr;
+  read(n);
+  for i := 0 to n do
+  begin
+    read(ch);
+    a[i] := ord(ch) - 48;
+  end;
+  readln;
+  readln(st);
+  s := mahoa(st, a, n);
+  writeln(s);
+  write(length(xauchung(st, s)));
+  readln;
+end.
 ```
 ## C++
 ```cpp
