@@ -488,4 +488,71 @@ end.
 ```
 ## C++
 ```cpp
+#include <bits/stdc++.h>
+using namespace std;
+typedef string str;
+int n;
+char ch;
+str st, s;
+
+str hv(str st, vector<int> a, int n) {
+    str res;
+    for (int i = 0; i < n; i++)
+        res += st[a[i] - 1];
+    return res;
+}
+
+str mahoa(str st, vector<int> a, int n) {
+    while (st.size() % n != 0)
+        st += ' ';
+    str res;
+    for (int i = 0; i < st.size() / n; i++) {
+        int x = i * n, y = x + n;
+        res += hv(st.substr(x, y), a, n);
+    }
+    return res;
+}
+
+string lcs(string a, string b) {
+    int m = a.size(), n = b.size(), len = 0, r, c;
+    vector<vector<int>> dp(m+1, vector<int>(n+1, 0));
+    for(int i = 1; i <= m; i++)
+        for(int j = 1; j <= n; j++)
+            if(a[i - 1] == b[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+                if(dp[i][j] > len) {
+                    len = dp[i][j];
+                    r = i;
+                    c = j;
+                }
+            }
+            else dp[i][j] = 0;
+
+    string result;
+    while(dp[r][c] != 0) {
+        result = a[r - 1] + result;
+        r--;
+        c--;
+    }
+    return result;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    freopen("Bai02.inp", "r", stdin);
+    freopen("Bai02.out", "w", stdout);
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> ch;
+        a[i] = (int(ch) - 48);
+    }
+    cin.ignore();
+    getline(cin, st);
+    s = mahoa(st, a, n);
+    cout << s << '\n';
+    cout << lcs(st, s).size();
+    return 0;
+}
 ```
