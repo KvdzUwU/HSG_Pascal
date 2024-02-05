@@ -737,3 +737,70 @@ int main() {
     return 0;
 }
 ```
+# Tìm Đường Đi Có Tổng Lớn Nhất Trong Tam Giác
+Input
+```
+5
+7
+3 8
+8 1 0
+2 7 4 4
+4 5 2 6 5
+```
+Output
+```
+30
+7 3 8 7 5
+```
+## Pascal
+```pascal
+```
+## C++
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int n, m = INT_MIN, cmax = INT_MIN, sum = 0, a[105][105], b[105], luu[105];
+
+void Nhap() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            cin >> a[i][j];
+            cmax = max(cmax, a[i][j]);
+        }
+    }
+}
+
+void copyArr(int *a, int *b, int s) {
+    copy(b, b + s, a);
+}
+
+void Try(int i, int k) {
+    for (int j = k; j <= k + 1; j++) {
+        b[i] = a[i][j];
+        sum += b[i];
+        if (i == n) {
+            if (m < sum) {
+                m = sum;
+                copyArr(luu, b, n + 1);
+            }
+        } else if (sum + a[i + 1][j] + (n - i - 1) * cmax >= m) {
+            Try(i + 1, j);
+        }
+        sum -= b[i];
+    }
+}
+
+int main() {
+    Nhap();
+    Try(1, 1);
+    cout << m << '\n';
+    for (int i = 1; i <= n; i++) {
+        cout << luu[i] << ' ';
+    }
+    return 0;
+}
+```
