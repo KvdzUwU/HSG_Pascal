@@ -663,6 +663,40 @@ Output
 ```
 ## Pascal
 ```pascal
+program ChiaThuong;
+uses crt;
+type int = longint;
+var m, n : int;
+a : array of int;
+procedure print;
+var i : int;
+begin
+  for i := 1 to n do
+    write(a[i],' ');
+  writeln;
+end;
+procedure try(i : int);
+var j : int;
+begin
+  for j := a[i - 1] downto 1 do
+  begin
+    a[i] := j;
+    m := m - a[i];
+    if m = 0 then
+      print
+    else if (i < n) and (m > 0) then
+      try(i + 1);
+    m := m + a[i];
+  end;
+end;
+begin
+  clrscr;
+    readln(m, n);
+    setlength(a, n + 1); 
+    a[0] := m;
+    try(1);
+  readln;
+end.
 ```
 ## C++
 ```cpp
