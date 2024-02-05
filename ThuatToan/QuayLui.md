@@ -559,6 +559,43 @@ int main() {
 # Phân Tích N Thành Dãy K Phần Tử
 ## Pascal
 ```pascal
+program PhanTichN;
+uses crt;
+type int = longint;
+var n, k : int;
+a : array of int;
+procedure print;
+var i : int;
+begin
+  for i := 1 to k do
+    write(a[i],' ');
+  writeln;
+end;
+procedure try(i : int);
+var j : int;
+begin
+  for j := a[i - 1] + 1 to n - k + i do
+  begin
+    a[i] := j;
+    n := n - a[i];
+    if i = k then
+    begin
+      if n = 0 then
+        print;
+    end
+      else if n > a[i] then
+        try(i + 1);
+    n := n + a[i];
+  end;
+end;
+begin
+  clrscr;
+    readln(n, k);
+    setlength(a, n + 1);
+    a[0] := 0;
+    try(1);
+  readln;
+end.
 ```
 ## C++
 ```cpp
@@ -582,7 +619,7 @@ void Try(int i) {
             if (n == 0) {
                 print();
             }
-        } else {
+        } else if (n > a[i]) {
             Try(i + 1);
         }
         n += a[i];
