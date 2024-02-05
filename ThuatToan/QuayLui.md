@@ -1,4 +1,4 @@
-# Chuỗi Nhị Phân Độ Dài N
+# Xâu Nhị Phân Độ Dài N
 Input
 ```
 3
@@ -74,6 +74,114 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
     cin >> n;
+    a = new int[n + 1];
+    Try(1);
+    delete[] a;
+    return 0;
+}
+```
+# Xâu Nhị Phân Độ Dài N Có Dãy Liên Tiếp K Bit
+Input
+```
+5 3
+```
+Output
+```
+00111
+01110
+10111
+11100
+11101
+```
+## Pascal
+```pascal
+program Binary2;
+uses crt;
+type int = longint;
+var n, k : int;
+a : array of int;
+procedure print;
+var i, m, d : int;
+begin
+  m := 0; d := 0;
+  for i := 1 to n do
+    if a[i] = 1 then
+      inc(d)
+    else
+    begin
+      if d > m then
+        m := d;
+      d := 0;
+    end;
+    if d > m then
+      m := d;
+    if m <> k then exit;
+    for i := 1 to n do
+      write(a[i]);
+    writeln;
+end;
+procedure try(i : int);
+var j : int;
+begin
+  for j := 0 to 1 do
+  begin
+    a[i] := j;
+    if i = n then
+      print
+    else try(i + 1);
+  end;
+end;
+begin
+  clrscr;
+    readln(n, k);
+    setlength(a, n + 1);
+    try(1);
+  readln;
+end.
+```
+## C++
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int n, k, *a;
+
+void print() {
+    int m = 0, d = 0;
+    for (int i = 1; i <= n; i++) {
+        if (a[i] == 1) {
+            d++;
+        } else {
+            m = max(m, d);
+            d = 0;
+        }
+    }
+    m = max(m, d);
+    if (m != k) {
+        return ;
+    }
+    for (int i = 1; i <= n; i++) {
+        cout << a[i];
+    }
+    cout << '\n';
+}
+
+void Try(int i) {
+
+    for (int j : {0, 1}) {
+        a[i] = j;
+        if (i == n) {
+            print();
+        } else {
+            Try(i + 1);
+        }
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    cin >> n >> k;
     a = new int[n + 1];
     Try(1);
     delete[] a;
@@ -380,6 +488,71 @@ int main() {
     for (int i = 0; i < d; i++) {
         cout << luu[i] << ' ';
     }
+    return 0;
+}
+```
+# Tạo Xâu Độ Dài N Từ 3 Kí Tự A, B, C
+Input
+```
+3
+```
+Output
+```
+ABC
+ACB
+BAC
+BCA
+CAB
+CBA
+```
+## Pascal
+```pascal
+program ABC;
+uses crt;
+type int = longint;
+var n : int;
+procedure try(s : string; i, n : int);
+var c : char;
+begin
+  if i = n then
+  begin
+    if (pos('A', s) <> 0) and (pos('B', s) <> 0) and (pos('C', s) <> 0) then
+      writeln(s);
+  end else
+    for c := 'A' to 'C' do
+      try(s + c, i + 1, n);
+end;
+begin
+  clrscr;
+    readln(n);
+    try('', 0, n);
+  readln;
+end.
+```
+## C++
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int n;
+
+void Try(string s, int i, int n) {
+    if (i == n) {
+        if (s.find('A') != string::npos && s.find('B') != string::npos && s.find('C') != string::npos) {
+            cout << s << '\n';
+        }
+    } else {
+        for (char c = 'A'; c <= 'C'; c++) {
+            Try(s + c, i + 1, n);
+        }
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    cin >> n;
+    Try("", 0, n);
     return 0;
 }
 ```
