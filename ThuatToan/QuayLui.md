@@ -556,3 +556,47 @@ int main() {
     return 0;
 }
 ```
+# Phân Tích N Thành Dãy K Phần Tử
+## Pascal
+```pascal
+```
+## C++
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int n, k, *a;
+
+void print() {
+    for (int i = 1; i <= k; i++) {
+        cout << a[i] << ' ';
+    }
+    cout << '\n';
+}
+
+void Try(int i) {
+    for (int j = a[i - 1] + 1; j <= n - k + i; j++) {
+        a[i] = j;
+        n -= a[i];
+        if (i == k) {
+            if (n == 0) {
+                print();
+            }
+        } else {
+            Try(i + 1);
+        }
+        n += a[i];
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    cin >> n >> k;
+    a = new int[k + 1];
+    a[0] = 0;
+    Try(1);
+    delete[] a;
+    return 0;
+}
+```
