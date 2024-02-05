@@ -557,6 +557,17 @@ int main() {
 }
 ```
 # Phân Tích N Thành Dãy K Phần Tử
+Input
+```
+10 3
+```
+Output
+```
+1 2 7
+1 3 6
+1 4 5
+2 3 5
+```
 ## Pascal
 ```pascal
 program PhanTichN;
@@ -632,6 +643,61 @@ int main() {
     cin >> n >> k;
     a = new int[k + 1];
     a[0] = 0;
+    Try(1);
+    delete[] a;
+    return 0;
+}
+```
+# Chia M Phần Thưởng Cho N Học Sinh
+Input
+```
+5 3
+```
+Output
+```
+5 0 0
+4 1 0
+3 2 0
+3 1 1
+2 2 1
+```
+## Pascal
+```pascal
+```
+## C++
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int m, n, *a;
+
+void print() {
+    for (int i = 1; i <= n; i++) {
+        cout << a[i] << ' ';
+    }
+    cout << '\n';
+}
+
+void Try(int i) {
+    for (int j = a[i - 1]; j > 0; j--) {
+        a[i] = j;
+        m -= a[i];
+        if (m == 0) {
+            print();
+        } else if (i < n && m > 0) {
+            Try(i + 1);
+        }
+        m += a[i];
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    cin >> m >> n;
+    a = new int[n + 1];
+    fill_n(a, sizeof(a), 0);
+    a[0] = m;
     Try(1);
     delete[] a;
     return 0;
