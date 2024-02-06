@@ -52,32 +52,30 @@ end.
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, *a;
+int n, a[105];
 
 void print() {
-    for (int i = 1; i <= n; i++) {
-        cout << a[i];
-    }
-    cout << '\n';
+	for (int i = 1; i <= n; i++) {
+		cout << a[i];
+	}
+	cout << '\n';
 }
 
 void Try(int i) {
-    for (int j = 0; j <= 1; j++) {
-        a[i] = j;
-        if (i == n) {
-            print();
-        } else Try(i + 1);
-    }
+	for (int j = 0; j <= 1; j++) {
+		a[i] = j;
+		if (i == n) {
+			print();
+		} else {
+			Try(i + 1);
+		}
+	}
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-    cin >> n;
-    a = new int[n + 1];
-    Try(1);
-    delete[] a;
-    return 0;
+	cin >> n;
+	Try(1);
+	return 0;
 }
 ```
 # Xâu Nhị Phân Độ Dài N Có Dãy Liên Tiếp K Bit
@@ -144,51 +142,46 @@ end.
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, k, *a;
+int n, k, a[105];
 
 void print() {
-    int m = 0, d = 0;
-    for (int i = 1; i <= n; i++) {
-        if (a[i] == 1) {
-            d++;
-        } else {
-            m = max(m, d);
-            d = 0;
-        }
-    }
-    m = max(m, d);
-    if (m != k) {
-        return ;
-    }
-    for (int i = 1; i <= n; i++) {
-        cout << a[i];
-    }
-    cout << '\n';
+	int m = 0, d = 0;
+	for (int i = 1; i <= n; i++) {
+		if (a[i]) {
+			d++;
+		} else {
+			m = max(m, d);
+			d = 0;
+		}
+	}
+	m = max(m, d);
+	if (m != k) {
+		return ;
+	}
+	for (int i = 1; i <= n; i++) {
+		cout << a[i];
+	}
+	cout << '\n';
 }
 
 void Try(int i) {
-
-    for (int j : {0, 1}) {
-        a[i] = j;
-        if (i == n) {
-            print();
-        } else {
-            Try(i + 1);
-        }
-    }
+	for (int j = 0; j <= 1; j++) {
+		a[i] = j;
+		if (i == n) {
+			print();
+		} else {
+			Try(i + 1);
+		}
+	}
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-    cin >> n >> k;
-    a = new int[n + 1];
-    Try(1);
-    delete[] a;
+	cin >> n >> k;
+	Try(1);
     return 0;
 }
 ```
-# Tập Con K Phần Tử
+# Tổ Hợp Chập K Của N
 Input
 ```
 5 3
@@ -245,36 +238,31 @@ end.
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, k;
-int *a;
+int n, k, a[105];
 
 void print() {
-    for (int i = 1; i <= k; i++) {
-        cout << a[i] << ' ';
-    }
-    cout << '\n';
-}w 
+	for (int i = 1; i <= k; i++) {
+		cout << a[i] << ' ';
+	}
+	cout << '\n';
+}
 
 void Try(int i) {
-    for (int j = a[i - 1] + 1; j <= n; j++) {
-        a[i] = j;
-        if (i == k) {
-            print();
-        } else {
-            Try(i + 1);
-        }
-    }
+	for (int j = a[i - 1] + 1; j <= n - k + i; j++) {
+		a[i] = j;
+		if (i == k) {
+			print();
+		} else {
+			Try(i + 1);
+		}
+	}
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-    cin >> n >> k;
-    a = new int[k + 1];
-    a[0] = 0;
-    Try(1);
-    delete[] a;
-    return 0;
+	cin >> n >> k;
+	a[0] = 0;
+	Try(1);
+	return 0;
 }
 ```
 # Hoán Vị Dãy
@@ -333,7 +321,7 @@ end.
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, *a, *b;
+int n, a[105], b[105];
 
 void print() {
     for (int i = 1; i <= n; i++) {
@@ -343,27 +331,24 @@ void print() {
 }
 
 void Try(int i) {
+
     for (int j = 1; j <= n; j++) {
         if (!b[j]) {
             a[i] = j;
             b[j] = 1;
             if (i == n) {
                 print();
-            } else Try(i + 1);
+            } else {
+                Try(i + 1);
+            }
             b[j] = 0;
         }
     }
 }
-
+ 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
     cin >> n;
-    a = new int[n + 1];
-    b = new int[n + 1];
     Try(1);
-    delete[] a;
-    delete[] b;
     return 0;
 }
 ```
@@ -468,8 +453,6 @@ void Try(int i) {
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
     cin >> n;
     if (n == 1) {
         for (int i = 2; i < 10; i++) {
@@ -509,23 +492,20 @@ CBA
 ```pascal
 program ABC;
 uses crt;
-type int = longint;
-var n : int;
-procedure try(s : string; i, n : int);
+var n : longint;
+procedure try(s : string);
 var c : char;
 begin
-  if i = n then
-  begin
-    if (pos('A', s) <> 0) and (pos('B', s) <> 0) and (pos('C', s) <> 0) then
-      writeln(s);
-  end else
+  if length(s) < n then
     for c := 'A' to 'C' do
-      try(s + c, i + 1, n);
+      try(s + c)
+  else if (pos('A', s) <> 0) and (pos('B', s) <> 0) and (pos('C', s) <> 0) then
+    writeln(s); 
 end;
 begin
   clrscr;
     readln(n);
-    try('', 0, n);
+    try('');
   readln;
 end.
 ```
@@ -536,24 +516,22 @@ using namespace std;
 
 int n;
 
-void Try(string s, int i, int n) {
-    if (i == n) {
-        if (s.find('A') != string::npos && s.find('B') != string::npos && s.find('C') != string::npos) {
-            cout << s << '\n';
-        }
-    } else {
-        for (char c = 'A'; c <= 'C'; c++) {
-            Try(s + c, i + 1, n);
-        }
-    }
+void Try(string s) {
+	if (s.size() == n) {
+		if (s.find('A') != string::npos && s.find('B') != string::npos && s.find('C') != string::npos) {
+			cout << s << '\n';
+		}
+	} else {
+		for (char c = 'A'; c <= 'C'; c++) {
+			Try(s + c);
+		}
+	}
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-    cin >> n;
-    Try("", 0, n);
-    return 0;
+	cin >> n;
+	Try("");
+	return 0;
 }
 ```
 # Phân Tích N Thành Dãy K Phần Tử
@@ -613,39 +591,35 @@ end.
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, k, *a;
+int n, k, a[105];
 
 void print() {
-    for (int i = 1; i <= k; i++) {
-        cout << a[i] << ' ';
-    }
-    cout << '\n';
+	for (int i = 1; i <= k; i++) {
+		cout << a[i] << ' ';
+	}
+	cout << '\n';
 }
 
 void Try(int i) {
-    for (int j = a[i - 1] + 1; j <= n - k + i; j++) {
-        a[i] = j;
-        n -= a[i];
-        if (i == k) {
-            if (n == 0) {
-                print();
-            }
-        } else if (n > a[i]) {
-            Try(i + 1);
-        }
-        n += a[i];
-    }
+	for (int j = a[i - 1] + 1; j <= n - k + i; j++) {
+		a[i] = j;
+		n -= a[i];
+		if (i == k) {
+			if (n == 0) {
+			print();
+			}
+		} else if (n > a[i]) { 
+			Try(i + 1);
+		}
+		n += a[i];
+	}
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-    cin >> n >> k;
-    a = new int[k + 1];
-    a[0] = 0;
-    Try(1);
-    delete[] a;
-    return 0;
+	cin >> n >> k;
+	a[0] = 0;
+	Try(1);
+	return 0;
 }
 ```
 # Chia M Phần Thưởng Cho N Học Sinh
@@ -703,38 +677,34 @@ end.
 #include <bits/stdc++.h>
 using namespace std;
 
-int m, n, *a;
+int m, n;
+vector<int> a(105, 0);
 
 void print() {
-    for (int i = 1; i <= n; i++) {
-        cout << a[i] << ' ';
-    }
-    cout << '\n';
+	for (int i = 1; i <= n; i++ ) {
+		cout << a[i] << ' ';
+	}	
+	cout << '\n';
 }
 
 void Try(int i) {
-    for (int j = a[i - 1]; j > 0; j--) {
-        a[i] = j;
-        m -= a[i];
-        if (m == 0) {
-            print();
-        } else if (i < n && m > 0) {
-            Try(i + 1);
-        }
-        m += a[i];
-    }
+	for (int j = a[i - 1]; j > m / n; j--) {
+		a[i] = j;
+		m -= a[i];
+		if (m == 0) {
+			print();
+		} else if (m > 0 && i < n) {
+			Try(i + 1);
+		}
+		m += a[i];
+	}
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-    cin >> m >> n;
-    a = new int[n + 1];
-    fill_n(a, sizeof(a), 0);
-    a[0] = m;
-    Try(1);
-    delete[] a;
-    return 0;
+	cin >> m >> n;
+	a[0] = m;
+	Try(1);
+	return 0;
 }
 ```
 # Tìm Đường Đi Có Tổng Lớn Nhất Trong Tam Giác
