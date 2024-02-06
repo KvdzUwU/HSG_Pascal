@@ -55,27 +55,27 @@ using namespace std;
 int n, a[105];
 
 void print() {
-	for (int i = 1; i <= n; i++) {
-		cout << a[i];
-	}
-	cout << '\n';
+	  for (int i = 1; i <= n; i++) {
+		    cout << a[i];
+	  }
+	  cout << '\n';
 }
 
 void Try(int i) {
-	for (int j = 0; j <= 1; j++) {
-		a[i] = j;
-		if (i == n) {
-			print();
-		} else {
-			Try(i + 1);
-		}
-	}
+	  for (int j = 0; j <= 1; j++) {
+		    a[i] = j;
+		    if (i == n) {
+			      print();
+		    } else {
+			      Try(i + 1);
+		    }
+	  }
 }
 
 int main() {
-	cin >> n;
-	Try(1);
-	return 0;
+	  cin >> n;
+	  Try(1);
+	  return 0;
 }
 ```
 # Xâu Nhị Phân Độ Dài N Có Dãy K Bit Liên Tiếp
