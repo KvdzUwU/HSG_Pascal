@@ -1,7 +1,7 @@
 # Xâu Nhị Phân Độ Dài N
 Input
 ```
-3
+3  
 ```
 Output
 ```
