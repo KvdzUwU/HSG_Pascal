@@ -75,7 +75,7 @@ void Try(int i) {
 int main() {
 	cin >> n;
 	Try(1);
-	return 0;
+return 0;
 }
 ```
 # Xâu Nhị Phân Độ Dài N Có Dãy K Bit Liên Tiếp
