@@ -78,7 +78,7 @@ int main() {
 	return 0;
 }
 ```
-# Xâu Nhị Phân Độ Dài N Có Dãy Liên Tiếp K Bit
+# Xâu Nhị Phân Độ Dài N Có Dãy K Bit Liên Tiếp
 Input
 ```
 5 3
