@@ -796,7 +796,74 @@ int main() {
 1 10 7 9 6 3 8 5 4 11 2 1
 ```
 ## Code
-C++
+### Pascal
+```pascal
+const maxn = 25;
+s = 1;
+inf = 1000000;
+type int = longint;
+arr = array[1..maxn] of int;
+arr2C = array[1..maxn, 1..maxn] of int;
+var i, n, ans, m, cmin : int;
+a : arr2C;
+x, visited, luu : arr;
+
+procedure nhap();
+var i, j : int;
+begin
+	assign(input, 'inp.txt'); reset(input);
+	assign(output, 'out.txt'); rewrite(output);
+	readln(n);
+	fillchar(visited, sizeof(visited), 0);
+	cmin := inf;
+	ans := inf;
+	m := 0;
+	x[1] := s;
+	visited[s] := 1;
+	for i := 1 to n do
+		for j := 1 to n do
+		begin
+			read(a[i][j]);
+			if (a[i][j] <> 0) and (cmin > a[i][j]) then
+				cmin := a[i][j];
+		end;
+end;
+
+procedure update();
+begin
+	if (m + a[x[n]][1] > ans) then
+		exit;
+	ans := m + a[x[n]][1];
+	luu := x;
+end;
+
+procedure try(i : int);
+var j : int;
+begin
+	for j := 1 to n do
+		if (visited[j] = 0) then
+		begin
+			x[i] := j;
+			visited[j] := 1;
+			m := m + a[x[i - 1]][j];
+			if (i = n) then
+				update()
+			else if (m + (n - i + 1) * cmin < ans) then
+				try(i + 1);
+			visited[j] := 0;
+			m := m - a[x[i - 1]][j];
+		end;
+end;
+begin
+	nhap();
+	try(2);
+	writeln(ans);
+	for i := 1 to n do
+		write(luu[i],' ');
+	write(1);
+end.
+```
+### C++
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
