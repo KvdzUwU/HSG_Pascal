@@ -775,3 +775,86 @@ int main() {
 }
 ```
 # Người Du Lịch
+## Input
+```
+11
+0 7 83 7 98 95 96 43 19 5 77
+7 0 90 91 91 93 85 47 88 29 24
+83 90 0 95 44 12 58 32 78 20 51
+7 91 95 0 9 51 45 52 47 49 12
+98 91 44 9 0 48 28 18 56 16 67
+95 93 12 51 48 0 54 82 40 33 78
+96 85 58 45 28 54 0 55 31 22 100
+43 47 32 52 18 82 55 0 66 97 76
+19 88 78 47 57 40 31 66 0 58 68
+5 29 20 49 17 33 22 97 58 0 23
+77 24 51 12 67 78 100 76 68 23 0
+```
+## Output
+```
+212
+1 10 7 9 6 3 8 5 4 11 2 1
+```
+## Code
+C++
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 25, s = 1, inf = 1e6;
+int n, ans = inf, cmin = inf, m = 0, a[N][N], visited[N], x[N], luu[N];
+
+void nhap() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            cin >> a[i][j];
+            if (a[i][j] != 0) {
+                cmin = min(cmin, a[i][j]);
+            }
+        }
+    }
+    memset(visited, 0, sizeof(visited));
+    x[1] = s;
+    visited[s] = 1;
+}
+
+void update() {
+    if (m + a[x[n]][1] > ans) {
+        return ;
+    }
+    ans = m + a[x[n]][1];
+    for (int i = 1; i <= n; i++) {
+        luu[i] = x[i];
+    }
+}
+
+void Try(int i) {
+    for (int j = 1; j <= n; j++) {
+        if (visited[j] == 0) {
+            x[i] = j;
+            visited[j] = 1;
+            m += a[x[i - 1]][j];
+            if (i == n) {
+                update();
+            } else if (m + (n - i + 1) * cmin < ans) {
+                Try(i + 1);
+            }
+            visited[j] = 0;
+            m -= a[x[i - 1]][j];
+        }
+    }
+}
+
+int main() {
+    nhap();
+    Try(2);
+    cout << ans << '\n';
+    for (int i = 1; i <= n; i++) {
+        cout << luu[i] << ' ';
+    }
+    cout << 1;
+    return 0;
+}
+```
