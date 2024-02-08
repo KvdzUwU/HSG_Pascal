@@ -774,6 +774,66 @@ int main() {
     return 0;
 }
 ```
+# Tìm Dãy Con Có Tổng Bằng S
+## Input
+```
+7 26
+4 2 5 1 6 8 3
+```
+## Output
+```
+4 2 5 1 6 8 
+4 5 6 8 3 
+```
+## Code
+### C++
+```cpp
+#include <bits/stdc++.h>
+#define pub push_back
+#define pob pop_back
+using namespace std;
+
+int n, m, s;
+vector<int> a(1, 0), x;
+
+void print() {
+    for (int i : x) {
+        cout << i << ' ';
+    }
+    cout << '\n';
+}
+
+void Try(int i) {
+    for (int j = 1; j >= 0; j--) {
+        if (j == 1) {
+            x.pub(a[i]);
+        }
+        s -= a[i] * j;
+        if (s == 0) {
+            print();
+        } else if (i < n && s > 0) {
+            Try(i + 1);
+        }
+        s += a[i] * j;
+        if (j == 1) {
+            x.pob();
+        }
+    }
+}
+
+int main() {
+    cin >> n >> s;
+    for (int i = 1; i <= n; i++) {
+        cin >> m;
+        if (m < s) {
+            a.pub(m);
+        }
+    }
+    n = a.size();
+    Try(1);
+    return 0;
+}
+```
 # Người Du Lịch
 ## Input
 ```
